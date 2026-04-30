@@ -14,7 +14,28 @@ struct DataBarang{
     Barang data;
     DataBarang* next;
 };
+
 DataBarang* head = NULL;
+
+void simpanData(){
+    FILE *data = fopen("swalayan.txt", "w");
+    if(data == NULL) {
+        if(data == NULL) {
+            cout << "Gagal menyimpan file" << endl;
+            return;
+                }
+    DataBarang* bantu = head;
+    while(bantu) {
+        fprintf(data, "%d;%s;%d;%d\n",
+            bantu-> data.id_barang,
+            bantu->data.Nama_barang,
+            bantu->data.harga,
+            bantu->data.stok
+        );
+    }
+    fclose(data);
+    }
+}
 
 void tambahBarang(){
     DataBarang* tambah = new DataBarang;
@@ -54,25 +75,6 @@ void tampilBarang() {
     }
 
 }
-void simpanData(){
-    FILE *data = fopen("swalayan.txt", "w");
-    if(data == NULL) {
-        if(data == NULL) {
-            cout << "Gagal menyimpan file" << endl;
-            return;
-                }
-    DataBarang* bantu = head;
-    while(bantu) {
-        fprintf(data, "%d;%s;%d;%d\n",
-            bantu-> data.id_barang,
-            bantu->data.Nama_barang,
-            bantu->data.harga,
-            bantu->data.stok
-        );
-    }
-    fclose(data);
-    }
-}
 
 // search (sequential search)
 
@@ -83,7 +85,7 @@ DataBarang* cariBarang(int id){
         if(bantu->data.id_barang == id)
         return bantu;
 
-        bantu = bantu->next
+        bantu = bantu->next;
     }
     return NULL;
 }
@@ -124,7 +126,7 @@ void sortBarang(bool asc){
         tukar = false;
         DataBarang* bantu = head;
 
-        while (temp->next) {
+        while (bantu->next) {
 
             if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
 
@@ -134,7 +136,7 @@ void sortBarang(bool asc){
 
                 tukar = true;
             }
-            temp = temp->next;
+            bantu = bantu->next;
         }
     } while (tukar);
 
