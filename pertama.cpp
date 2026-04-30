@@ -49,7 +49,7 @@ void tampilBarang() {
         cout << setw(10) << bantu->data.id_barang
              << setw(15) << bantu->data.Nama_barang
              << setw(10) << bantu->data.stok
-             << setw(10) << bantu.harga << endl;
+             << setw(10) << bantu->harga << endl;
              bantu =  bantu->next;
     }
 
@@ -58,7 +58,7 @@ void tampilBarang() {
 // search (sequential search)
 
 Databarang* cariBarang(int id){
-    Databarang* bantu = head;
+    DataBarang* bantu = head;
 
     while (bantu) {
         if(bantu->data.id_barang == id)
