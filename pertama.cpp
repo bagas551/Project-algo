@@ -61,9 +61,24 @@ int main() {
 
         cout << "\napakah ingin tambah barang lagi? (y/t) ";
         cin >> pilihan;
-    } while (pilihan ++ 'y' || pilihan == 'Y');
+    } while (pilihan == 'y' || pilihan == 'Y');
 
     cout << "Terima kasih! Program Selesai." << endl;
 
     return 0;
 }
+
+// search (sequential search)
+
+Databarang* cariBarang(int id){
+    Databarang* bantu = head;
+
+    while (bantu) {
+        if(bantu->data.id_barang == id)
+        return bantu;
+
+        bantu = bantu->next
+    }
+    return NULL;
+}
+
