@@ -148,6 +148,23 @@ void sortBarang(bool asc){
     }
     
 }
+void updateStok(){
+    int id_baru;
+    int stok_baru;
+    cout << "Masukkan ID: ";
+    cin>> id_baru;
+    DataBarang* ada = cariBarang(int i);
+    if(ada) {
+        cout << "Masukkan stok baru: ";
+        cin>> stok_baru;
+        ada->data.stok = stok_baru;
+        simpanData();
+    cout << "Stok berhasil diupdate" << endl;
+
+    } else
+    cout << "Barang tidak ditemukan" << endl;
+}
+
 
 void menuSort() {
     int pilihanSort;
