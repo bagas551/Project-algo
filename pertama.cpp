@@ -54,64 +54,6 @@ void tampilBarang() {
     }
 
 }
-void updateStok(){
-    int id_baru;
-    int stokBaru;
-    cout << "Masukkan ID: ";
-    cin >> id_baru;
-
-    DataBarang* ada = cariBarang(id_baru);
-    if(ada) {
-        cout << "Stok baru : ";
-        cin >> stokBaru;
-        ada->data.stok = stokBaru;
-        simpanData();
-        cout << "Stok berhasil diupdate" << endl;
-
-    } else {
-        cout << "Barang tidak ditemukan" << endl;
-    }
-        
-    }
-void simpanData(){
-    FILE *file =fopen("swalayan.txt","w");
-    if(data == NULL) {
-        cout << "Gagal Menyimpan File" << endl;
-        return;
-    }
-    DataBarang* bantu = head;
-    while (bantu) {
-        fprintf(data, "%d;%s;%d;%d\n",
-                bantu-> data.id_barang,
-                bantu-> data.Nama_barang,
-                bantu->data.harga,
-                bantu->data.stok );
-            bantu = bantu-> next;
-        }
-        fclose(data);
-}
-
-
-
-
-int main() {
-    char pilihan;
-
-    cout << "=== Program Pendataan Swalayan ===" << endl;
-    
-    do {
-        tambahBarang();
-
-        
-    }
-        cout << "\napakah ingin tambah barang lagi? (y/t) ";
-        cin >> pilihan;
-    } while (pilihan == 'y' || pilihan == 'Y');
-
-    cout << "Terima kasih! Program Selesai." << endl;
-
-    return 0;
-}
 
 // search (sequential search)
 
@@ -126,4 +68,27 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+void menuCari() {
+    int cari;
+    char cari_lagi;
 
+    do {
+        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "Masukkan ID Barang yang mau dicari: ";
+        cin >> cari;
+
+        DataBarang* hasil = cariBarang(cari);
+
+        if (hasil != NULL) {
+            cout << " Berhasil ketemu" << endl;
+            cout << " Nama  : " << hasil->data.Nama_barang << endl;
+            cout << " Stok  : " << hasil->data.stok << endl;
+            cout << " Harga : " << hasil->data.harga << endl;
+        } else {
+            cout << " Yaahh Barang ini ga ketemu" << endl;
+        }
+        
+        cout << "\n Mau cari barang lain? (y/t)";
+        cin >> cari_lagi;
+    } while (cari_lagi == 'y' || cari_lagi == 'Y');  
+}
