@@ -68,28 +68,7 @@ void tampilBarang() {
              bantu =  bantu->next;
     }
 
-}
-
-int main() {
-    char pilihan;
-
-    cout << "=== Program Pendataan Swalayan ===" << endl;
-    
-    do {
-        tambahBarang();
-
-        
-    }
-        cout << "\napakah ingin tambah barang lagi? (y/t) ";
-        cin >> pilihan;
-    } while (pilihan == 'y' || pilihan == 'Y');
-
-    cout << "Terima kasih! Program Selesai." << endl;
-
-    return 0;
-}
-
-// search (sequential search)
+} // search (sequential search)
 
 Databarang* cariBarang(int id){
     Databarang* bantu = head;
@@ -102,4 +81,27 @@ Databarang* cariBarang(int id){
     }
     return NULL;
 }
+void menuCari() {
+    int cari;
+    char cari_lagi;
 
+    do {
+        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "Masukkan ID Barang yang mau dicari: ";
+        cin >> cari;
+
+        DataBarang* hasil = cariBarang(cari);
+
+        if (hasil != NULL) {
+            cout << " Berhasil ketemu" << endl;
+            cout << " Nama  : " << hasil->data.Nama_barang << endl;
+            cout << " Stok  : " << hasil->data.stok << endl;
+            cout << " Harga : " << hasil->data.harga << endl;
+        } else {
+            cout << " Yaahh Barang ini ga ketemu" << endl;
+        }
+        
+        cout << "\n Mau cari barang lain? (y/t)";
+        cin >> cari_lagi;
+    } while (cari_lagi == 'y' || cari_lagi == 'Y');  
+}
