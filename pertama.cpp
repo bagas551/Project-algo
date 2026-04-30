@@ -57,7 +57,7 @@ void tampilBarang() {
 
 // search (sequential search)
 
-Databarang* cariBarang(int id){
+DataBarang* cariBarang(int id){
     DataBarang* bantu = head;
 
     while (bantu) {
