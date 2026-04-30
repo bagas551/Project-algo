@@ -49,6 +49,26 @@ void tambahBarang(){
         fclose(data);
     cout << "Data Berhasil Ditambahkan" << endl;
 }
+void tampilBarang() {
+    DataBarang* bantu = head;
+    if(!bantu) {
+        cout << "Belum ada Barang di Toko Swalayan" << endl;
+        return;
+    }
+    cout << left << setw(10) << "ID_BARANG" 
+        << setw(15) << "Nama"
+        << setw(15) << "Stok"
+        << setw(10) << "Harga" << endl;
+        
+    while(bantu) {
+        cout << setw(10) << bantu->data.id_barang
+             << setw(15) << bantu->data.Nama_barang
+             << setw(10) << bantu->data.stok
+             << setw(10) << bantu.harga << endl;
+             bantu =  bantu->next;
+    }
+
+}
 
 int main() {
     char pilihan;
@@ -58,10 +78,8 @@ int main() {
     do {
         tambahBarang();
 
-<<<<<<< HEAD
         
     }
-=======
         cout << "\napakah ingin tambah barang lagi? (y/t) ";
         cin >> pilihan;
     } while (pilihan ++ 'y' || pilihan == 'Y');
@@ -69,5 +87,4 @@ int main() {
     cout << "Terima kasih! Program Selesai." << endl;
 
     return 0;
->>>>>>> 88fa767fa1927c524a2b26669b13f31335f66531
 }
