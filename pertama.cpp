@@ -69,7 +69,27 @@ void tampilBarang() {
     }
 
 }
-void 
+void updateStok(){
+    int id_baru;
+    int tambah;
+    cout << "Masukkan ID: ";
+    cin >> id_baru;
+
+    DataBarang* ada = cariBarang(id);
+    if(ada) {
+        cout << "Stok baru : ";
+        cin >> stokBaru;
+        ada->data.stok = stokBaru;
+        cout << "Stok berhasil diupdate" << endl;
+
+    } else {
+        cout << "Barang tidak ditemukan" << endl;
+    }
+
+    }
+
+
+
 
 int main() {
     char pilihan;
