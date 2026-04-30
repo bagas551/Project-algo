@@ -4,14 +4,14 @@
 #include <iomanip>
 using namespace std;
 
-struct barang {
+struct Barang {
     int id_barang;
     char Nama_barang[100];
     int stok;
     int harga;
 };  
 struct DataBarang{
-    barang data;
+    Barang data;
     DataBarang* next;
 };
 DataBarang* head = NULL;
@@ -22,7 +22,8 @@ void tambahBarang(){
     cout << "Masukan Id Barang: ";
     cin >> tambah->data.id_barang;
     cout << "Masukkan Nama Barang: ";
-    cin >> tambah->data.Nama_barang;
+    cin.ignore();
+    cin.getline(tambah->data.Nama_barang, 100);
     cout << "Masukkan Harga Barang: ";
     cin >> tambah->data.harga;
     cout << "Masukkan Stok Barang: ";
@@ -31,16 +32,33 @@ void tambahBarang(){
     head = tambah;
 
     FILE *data = fopen("swalayan.txt", "a");
+    if (data == NULL) {
+        cout << "Gagal membuka file " << endl;
+        return;
+    }
     DataBarang* bantu = head;
     while (bantu) {
-        fprintf(DataBarang, "%d;%s;%d;%d\n",
-                bantu-> data.id_barang,
-                bantu-> data.Nama_barang,
-                bantu->data.harga,
-                bantu->data.stok
-            );
+        fprintf(data, "%d;%s;%d;%d\n",
+                tambah-> data.id_barang,
+                tambah-> data.Nama_barang,
+                tambah->data.harga,
+                tambah->data.stok );
+            
             bantu = bantu->next;
-        }
-        fclose(file);
     
+        }
+        fclose(data);
+    cout << "Data Berhasil Ditambahkan";
 };
+
+int main() {
+    char pilihan;
+
+    cout << "=== Program Pendataan Swalayan ===" << endl;
+    
+    do {
+        tambahBarang();
+
+        c
+    }
+}
