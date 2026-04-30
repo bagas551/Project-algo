@@ -96,4 +96,57 @@ void menuCari() {
         cin >> cari_lagi;
     } while (cari_lagi == 'y' || cari_lagi == 'Y');  
 }
-cout <<
+
+void sortBarang(bool asc){
+    if (!head){
+        cout << "\n Belum ada barang untuk diurutkan" << endl;
+        return;
+    }
+
+    bool tukar;
+
+    do{
+        tukar = false;
+        DataBarang* bantu = head;
+
+        while (temp->next) {
+
+            if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
+
+                Barang swap = bantu->data;
+                bantu->data = bantu->next->data;
+                bantu->next->data = swap;
+
+                tukar = true;
+            }
+            temp = temp->next;
+        }
+    } while (tukar);
+
+    cout << "\n Data berhasil diurutkan";
+    if (asc == true) {
+        cout << "ASCENDING (Murah ke Mahal)" << endl;
+    } else {
+        cout << "Urut secara Descending" << endl;
+    }
+    
+}
+
+void menuSort() {
+    int pilihanSort;
+    cout << "\n === Urut Berdasarkan Harga ===" << endl;
+    cout << "1. Ascending" << endl;
+    cout << "2. Descending" << endl;
+    cout << "Pilih urutan (1/2): ";
+    cin >> pilihanSort;
+
+    if (pilihanSort == 1) {
+        sortBarang(true);
+        tampilBarang();
+    } else if (pilihanSort == 2) {
+        sortBarang(false);
+        tampilBarang();
+    } else {
+        cout << "\n Pilihan tidak valid" << endl;
+    }
+}
