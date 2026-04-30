@@ -31,22 +31,7 @@ void tambahBarang(){
     tambah->next = head;
     head = tambah;
 
-    FILE *data = fopen("swalayan.txt", "a");
-    if (data == NULL) {
-        cout << "Gagal membuka file " << endl;
-        return;
-    }
-    DataBarang* bantu = head;
-    while (bantu) {
-        fprintf(data, "%d;%s;%d;%d\n",
-                tambah-> data.id_barang,
-                tambah-> data.Nama_barang,
-                tambah->data.harga,
-                tambah->data.stok );
-            
-    
-        }
-        fclose(data);
+    simpanData();
     cout << "Data Berhasil Ditambahkan" << endl;
 }
 void tampilBarang() {
@@ -71,22 +56,40 @@ void tampilBarang() {
 }
 void updateStok(){
     int id_baru;
-    int tambah;
+    int stokBaru;
     cout << "Masukkan ID: ";
     cin >> id_baru;
 
-    DataBarang* ada = cariBarang(id);
+    DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Stok baru : ";
         cin >> stokBaru;
         ada->data.stok = stokBaru;
+        simpanData();
         cout << "Stok berhasil diupdate" << endl;
 
     } else {
         cout << "Barang tidak ditemukan" << endl;
     }
-
+        
     }
+void simpanData(){
+    FILE *file =fopen("swalayan.txt","w");
+    if(data == NULL) {
+        cout << "Gagal Menyimpan File" << endl;
+        return;
+    }
+    DataBarang* bantu = head;
+    while (bantu) {
+        fprintf(data, "%d;%s;%d;%d\n",
+                bantu-> data.id_barang,
+                bantu-> data.Nama_barang,
+                bantu->data.harga,
+                bantu->data.stok );
+            bantu = bantu-> next;
+        }
+        fclose(data);
+}
 
 
 
