@@ -32,6 +32,7 @@ void simpanData(){
             bantu->data.harga,
             bantu->data.stok
         );
+        bantu = bantu->next;
     }
     fclose(data);
     }
@@ -153,7 +154,7 @@ void updateStok(){
     int stok_baru;
     cout << "Masukkan ID: ";
     cin >> id_baru;
-    DataBarang* ada = cariBarang(int i);
+    DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru: ";
         cin>> stok_baru;
@@ -164,7 +165,6 @@ void updateStok(){
     } else
     cout << "Barang tidak ditemukan" << endl;
 }
-
 
 void menuSort() {
     int pilihanSort;
@@ -183,4 +183,79 @@ void menuSort() {
     } else {
         cout << "\n Pilihan tidak valid" << endl;
     }
+}
+
+void hapusBarang(){
+    int id;
+    cout <<"Masukkan ID: ";
+    cin >> id;
+
+    DataBarang *bantu = head;
+    DataBarang *prev = NULL;
+
+    while (bantu && bantu->data.id != id){
+        prev = bantu;
+        bantu = bantu->next;
+    }
+
+    if (!bantu){
+        cout << "Data tidak ditemukan!\n";
+        return;
+    }
+
+    if(!prev) {
+        head = bantu->next;
+        cout << "Hapus barang paling didepan\n";
+    } else {
+        prev->next = bantu->next;
+        cout << "Hapus barang ditengah";
+    } 
+    
+}
+
+int main () {
+    int menu;
+
+    do {
+        cout << " === TOKOK SWALAYAN ====\n";
+        cout << "1. Tambah Barang\n";
+        cout << "2. Lihat Barang\n";
+        cout << "3. Urut harga\n";
+        cout << "4. Cari Barang\n ";
+        cout << "5. Urut Stock\n";
+        cout << "6. Hapus\n";
+        cout << "7. Update Stock\n";
+        cout << "8. Keluar\n";
+        cout << "Pilih: ";
+        cin >> menu;
+
+        switch(menu){
+            case 1: tambahBarang(); break;
+            case 2: tampilBarang(); break;
+            case 3: sortBarang(true); break;
+            case 4: sortBarang(false); break;
+
+            case 5: {
+                int id;
+                cout << "ID: ";
+                cin >> id;
+
+                DataBarang* hasil = cariBarang(id);
+
+                if (hasil)
+                    cout << "Ketemu: " << hasil-> data.nama << endl;
+                    else
+                        cout << "Ga ada\n";\
+                    break;
+            }
+
+            case 6: sortStok(); break;
+            case 7: hapusBarang(); break;
+            case 8: updateStock(); break;
+        }
+
+        simpanFile();
+    } while(menu !=9);
+
+    return 0;
 }
