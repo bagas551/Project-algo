@@ -6,7 +6,7 @@ using namespace std;
 
 struct barang {
     int id_barang;
-    string Nama_barang;
+    char Nama_barang[100];
     int stok;
     int harga;
 };  
@@ -29,4 +29,18 @@ void tambahBarang(){
     cin >> tambah->data.stok;
     tambah->next = head;
     head = tambah;
+
+    FILE *data = fopen("swalayan.txt", "a");
+    DataBarang* bantu = head;
+    while (bantu) {
+        fprintf(DataBarang, "%d;%s;%d;%d\n",
+                bantu-> data.id_barang,
+                bantu-> data.Nama_barang,
+                bantu->data.harga,
+                bantu->data.stok
+            );
+            bantu = bantu->next;
+        }
+        fclose(file);
+    
 };
