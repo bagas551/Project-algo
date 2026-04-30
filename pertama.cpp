@@ -68,7 +68,9 @@ void tampilBarang() {
              bantu =  bantu->next;
     }
 
-} // search (sequential search)
+}
+
+// search (sequential search)
 
 Databarang* cariBarang(int id){
     Databarang* bantu = head;
