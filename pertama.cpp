@@ -152,7 +152,7 @@ void updateStok(){
     int id_baru;
     int stok_baru;
     cout << "Masukkan ID: ";
-    cin>> id_baru;
+    cin >> id_baru;
     DataBarang* ada = cariBarang(int i);
     if(ada) {
         cout << "Masukkan stok baru: ";
