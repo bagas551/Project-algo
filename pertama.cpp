@@ -69,6 +69,7 @@ void tampilBarang() {
     }
 
 }
+void 
 
 int main() {
     char pilihan;
