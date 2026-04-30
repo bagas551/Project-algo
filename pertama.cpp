@@ -32,6 +32,7 @@ void simpanData(){
             bantu->data.harga,
             bantu->data.stok
         );
+        bantu = bantu->next;
     }
     fclose(data);
     }
@@ -153,7 +154,7 @@ void updateStok(){
     int stok_baru;
     cout << "Masukkan ID: ";
     cin>> id_baru;
-    DataBarang* ada = cariBarang(int i);
+    DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru: ";
         cin>> stok_baru;
