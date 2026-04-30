@@ -54,67 +54,6 @@ void tampilBarang() {
     }
 
 }
-<<<<<<< HEAD
-=======
-void updateStok(){
-    int id_baru;
-    int stokBaru;
-    cout << "Masukkan ID: ";
-    cin >> id_baru;
-
-    DataBarang* ada = cariBarang(id_baru);
-    if(ada) {
-        cout << "Stok baru : ";
-        cin >> stokBaru;
-        ada->data.stok = stokBaru;
-        simpanData();
-        cout << "Stok berhasil diupdate" << endl;
-
-    } else {
-        cout << "Barang tidak ditemukan" << endl;
-    }
-        
-    }
-void simpanData(){
-    FILE *file =fopen("swalayan.txt","w");
-    if(data == NULL) {
-        cout << "Gagal Menyimpan File" << endl;
-        return;
-    }
-    DataBarang* bantu = head;
-    while (bantu) {
-        fprintf(data, "%d;%s;%d;%d\n",
-                bantu-> data.id_barang,
-                bantu-> data.Nama_barang,
-                bantu->data.harga,
-                bantu->data.stok );
-            bantu = bantu-> next;
-        }
-        fclose(data);
-}
-
-
-
-
-int main() {
-    char pilihan;
-
-    cout << "=== Program Pendataan Swalayan ===" << endl;
-    
-    do {
-        tambahBarang();
-
-        
-    }
-        cout << "\napakah ingin tambah barang lagi? (y/t) ";
-        cin >> pilihan;
-    } while (pilihan == 'y' || pilihan == 'Y');
-
-    cout << "Terima kasih! Program Selesai." << endl;
-
-    return 0;
-}
->>>>>>> 10ab05ba7d5dd19a1bfbd61e061c7395d4d181fe
 
 // search (sequential search)
 
