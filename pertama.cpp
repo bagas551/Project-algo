@@ -44,12 +44,11 @@ void tambahBarang(){
                 tambah->data.harga,
                 tambah->data.stok );
             
-            bantu = bantu->next;
     
         }
         fclose(data);
-    cout << "Data Berhasil Ditambahkan";
-};
+    cout << "Data Berhasil Ditambahkan" << endl;
+}
 
 int main() {
     char pilihan;
@@ -59,6 +58,6 @@ int main() {
     do {
         tambahBarang();
 
-        c
+        
     }
 }
