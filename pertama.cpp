@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <fstream>
 #include <iomanip>
+#include <stdio.h>
 using namespace std;
 
 struct Barang {
@@ -49,14 +49,29 @@ void tampilBarang() {
         cout << setw(10) << bantu->data.id_barang
              << setw(15) << bantu->data.Nama_barang
              << setw(10) << bantu->data.stok
-             << setw(10) << bantu->harga << endl;
+             << setw(10) << bantu->data.harga << endl;
              bantu =  bantu->next;
     }
 
 }
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
-    if()
+    if(data == NULL) {
+        if(data == NULL) {
+            cout << "Gagal menyimpan file" << endl;
+            return;
+                }
+    DataBarang* bantu = head;
+    while(bantu) {
+        fprintf(data, "%d;%s;%d;%d\n",
+            bantu-> data.id_barang,
+            bantu->data.Nama_barang,
+            bantu->data.harga,
+            bantu->data.stok
+        );
+    }
+    fclose(data);
+    }
 }
 
 // search (sequential search)
@@ -96,4 +111,3 @@ void menuCari() {
         cin >> cari_lagi;
     } while (cari_lagi == 'y' || cari_lagi == 'Y');  
 }
-cout <<
