@@ -58,6 +58,16 @@ int main() {
     do {
         tambahBarang();
 
+<<<<<<< HEAD
         
     }
+=======
+        cout << "\napakah ingin tambah barang lagi? (y/t) ";
+        cin >> pilihan;
+    } while (pilihan ++ 'y' || pilihan == 'Y');
+
+    cout << "Terima kasih! Program Selesai." << endl;
+
+    return 0;
+>>>>>>> 88fa767fa1927c524a2b26669b13f31335f66531
 }
