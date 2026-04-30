@@ -167,5 +167,3 @@ void menuSort() {
         cout << "\n Pilihan tidak valid" << endl;
     }
 }
-
-int main()
