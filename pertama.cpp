@@ -54,6 +54,10 @@ void tampilBarang() {
     }
 
 }
+void simpanData(){
+    FILE *data = fopen("swalayan.txt", "w");
+    if()
+}
 
 // search (sequential search)
 
