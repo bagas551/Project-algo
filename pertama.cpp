@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 #include <stdio.h>
+#include <cstring>
 using namespace std;
 
 struct Barang {
@@ -186,8 +187,51 @@ void cariId() {
 }
 
 void cariNama{
-    
+    char keyword[100];
+    bool ketemu = false;
+
+    if (head == NULL) {
+        cout << "Belum ada data barang\n";
+        return;
+    }
+
+    cout << "Masukkan nama yang dicari: ";
+    cin.ignore(1000, '\n');
+    cin.getline(keyword, 100);
+
+    DataBarang* bantu = head;
+
+    cout << "\nHasil Pencarian: \n";
+        cout << "=====================================\n";
+        cout << left << setw(10) << "ID"
+             << setw(20) << "Nama"
+             << setw(10) << "Stok"
+             << setw(10) << "Harga" << endl;
+        cout << "=====================================\n";
+
+    while (bantu){
+        if (strstr(bantu->data.Nama_barang, keyword)) {
+            cout << setw(10) << hasil->data.id_barang
+                 << setw(20) << hasil->data.Nama_barang
+                 << setw(10) << hasil->data.stok
+                 << setw(10) << hasil->data.harga << endl;
+            ketemu = true;
+        }
+        bantu = bantu->next;
+    }
+
+    if (!ketemu) {
+        cout << "Barang tidak ditemukan";
+    }
+
+    cout << "\nTekan enter untuk kembali ke menu";
+    cin.get();
+
 }
+void cariStok{
+
+}
+
 void sortBarang(bool asc){
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
