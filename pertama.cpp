@@ -185,6 +185,9 @@ void cariId() {
     cin.get();
 }
 
+void cariNama{
+    
+}
 void sortBarang(bool asc){
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
