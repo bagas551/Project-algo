@@ -172,7 +172,7 @@ void sortBarang(bool asc){
 
             if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
 
-                Barang swap = bantu->data;
+                DataBarang swap = bantu->data;
                 bantu->data = bantu->next->data;
                 bantu->next->data = swap;
 
