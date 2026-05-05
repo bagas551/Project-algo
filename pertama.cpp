@@ -18,6 +18,34 @@ struct DataBarang{
 
 DataBarang* head = NULL;
 
+void bacaData() {
+    FILE *data = fopen("swalayan.txt", "r");
+    if (data == NULL){
+        return;
+    }
+
+    while (head != NULL){
+        DataBarang* hapus = head;
+        head = head->next;
+        delete hapus;
+    }
+
+    while (!feof(data)) {
+        DataBarang* baru = new DataBarang;
+
+        if (fscanf(data, "%d;%[^;];%d;%d\n",
+        &baru->data.id_barang,
+        baru->data.Nama_barang, &baru->data.stok, &baru->data.harga) != 4) {
+            delete baru;
+            break;
+        }
+
+        baru->next = head;
+        head = baru;
+    }
+
+    fclose(data);
+}
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
         if(data == NULL) {
