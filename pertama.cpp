@@ -39,7 +39,7 @@ void simpanData(){
 
 void tambahBarang(){
     int jumlah;
-    cout << "Jumlah barang yang ingin ditambah :";
+    cout << "Jumlah tambah data barang :";
     cin >> jumlah;
     if (jumlah <= 0) {
         cout << "Data barang harus lebih dari 0" << endl;
@@ -49,7 +49,7 @@ void tambahBarang(){
     for(int i =0; i < jumlah; i++){
     DataBarang* tambah = new DataBarang;
     cout << "Data Barang ke-" << i+1 << endl;
-    cout << "Masukkan Id Barang: ";
+    cout << "Masukan Id Barang: ";
     cin >> tambah->data.id_barang;
 
     cout << "Masukkan Nama Barang: ";
@@ -79,6 +79,9 @@ void tambahBarang(){
     }
     simpanData();
     cout << "Data Berhasil Ditambahkan" << endl;
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 void tampilBarang() {
     DataBarang* bantu = head;
@@ -101,7 +104,9 @@ void tampilBarang() {
              << setw(10) << bantu->data.harga << endl;
              bantu =  bantu->next;
     }
-
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 
 // search (sequential search)
@@ -153,6 +158,9 @@ void menuCari() {
         cout << "\n Mau cari barang lain? (y/t)";
         cin >> cari_lagi;
     } while (cari_lagi == 'y' || cari_lagi == 'Y');  
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 
 void sortBarang(bool asc){
@@ -187,23 +195,35 @@ void sortBarang(bool asc){
     } else {
         cout << "Urut secara Descending" << endl;
     }
-    
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 void updateStok(){
     int id_baru;
     int stok_baru;
     cout << "Masukkan ID: ";
     cin >> id_baru;
+
     DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru: ";
         cin>> stok_baru;
+        
+        if(stok_baru < 0) {
+            cout << "Stok tidak boleh negatif" << endl;
+            return;
+        }
+        
         ada->data.stok = stok_baru;
         simpanData();
     cout << "Stok berhasil diupdate" << endl;
-
     } else
     cout << "Barang tidak ditemukan" << endl;
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
+
 }
 
 void menuSort() {
@@ -264,6 +284,9 @@ void hapusBarang(){
 
     delete bantu;
     simpanData();
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 
 int main() {
@@ -285,7 +308,7 @@ int main() {
             break;
             case 2: tampilBarang();
             break;
-            case 3: menuSort();
+            case 3:menuSort();
             break;
             case 4: menuCari();
             break;
@@ -293,7 +316,6 @@ int main() {
             break;
             case 6: updateStok();
             break;
-            case 7: cout << "\nTerima kasih! Selesai"
         }
     } while (pilihan != 7);
     return 0;
