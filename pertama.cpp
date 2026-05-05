@@ -249,12 +249,12 @@ int main () {
                     break;
             }
 
-            case 6: sortStok(); break;
+            case 6: sortStok(true); break;
             case 7: hapusBarang(); break;
-            case 8: updateStock(); break;
+            case 8: updateStok(); break;
         }
 
-        simpanFile();
+        simpanData();
     } while(menu !=9);
 
     return 0;
