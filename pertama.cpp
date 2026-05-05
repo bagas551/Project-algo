@@ -125,8 +125,6 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
-<<<<<<< HEAD
-=======
 void menuCari() {
     int pilihan;
         cout << "\n--- FITUR CARI BARANG ---" << endl;
@@ -147,7 +145,6 @@ void menuCari() {
         }
 }
 
->>>>>>> 5bf966ff214092c6e715399b46a32e21c09ee302
 void cariId() {
     int cari;
     char cari_lagi;
