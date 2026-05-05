@@ -109,7 +109,6 @@ void tampilBarang() {
 
 DataBarang* cariBarang(int id){
     DataBarang* bantu = head;
-
     while (bantu) {
         if(bantu->data.id_barang == id)
         return bantu;
@@ -118,9 +117,15 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+
 void menuCari() {
     int cari;
     char cari_lagi;
+
+    if (head == NULL) {
+        cout << "Belum ada data barang" << endl;
+        return;
+    }
 
     do {
         cout << "\n--- FITUR CARI BARANG ---" << endl;
@@ -131,9 +136,17 @@ void menuCari() {
 
         if (hasil != NULL) {
             cout << " Berhasil ketemu" << endl;
-            cout << " Nama  : " << hasil->data.Nama_barang << endl;
-            cout << " Stok  : " << hasil->data.stok << endl;
-            cout << " Harga : " << hasil->data.harga << endl;
+            cout << "=====================================\n";
+            cout << left << setw(10) << "ID"
+                 << setw(20) << "Nama"
+                 << setw(10) << "Stok"
+                 << setw(10) << "Harga" << endl;
+            cout << "=====================================\n";
+               
+            cout << setw(10) << hasil->data.id_barang
+                 << setw(20) << hasil->data.Nama_barang
+                 << setw(10) << hasil->data.stok
+                 << setw(10) << hasil->data.harga << endl;
         } else {
             cout << " Yaahh Barang ini ga ketemu" << endl;
         }
@@ -263,6 +276,9 @@ int main() {
             case 3: sortBarang();
             break;
             case 4: cariBarang();
+            break;
+            case 5: hapusBarang();
+            break;
         }
     }
 }
