@@ -172,7 +172,7 @@ void sortBarang(bool asc){
 
             if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
 
-                Barang swap = bantu->data;
+                DataBarang swap = bantu->data;
                 bantu->data = bantu->next->data;
                 bantu->next->data = swap;
 
@@ -238,10 +238,34 @@ void hapusBarang(){
     DataBarang *bantu = head;
     DataBarang *prev = NULL;
 
+
     while (bantu && bantu->data.id_barang !)
 
+    while (bantu && bantu->data.id_barang != id){
+        prev = bantu;
+        bantu = bantu->next;
+    }
 
+    if (!bantu){
+        cout << "Data tidak ditemukan!\n";
+        return;
+    }
 
+    if (prev == NULL){
+        head = bantu->next;
+        cout << "Hapus barang di depan\n";
+    } else {
+        prev->next = bantu->next;
+
+        if (bantu->next == NULL)
+        cout << "Hapus barang dibelakang\n";
+
+        else
+        cout << "Hapus barang di tengah\n";
+    }
+
+    free(bantu);
+    simpanData();
 }
 
 int main() {
