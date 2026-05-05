@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 #include <stdio.h>
+#include <cstring>
 using namespace std;
 
 struct Barang {
@@ -49,7 +50,7 @@ void tambahBarang(){
     for(int i =0; i < jumlah; i++){
     DataBarang* tambah = new DataBarang;
     cout << "Data Barang ke-" << i+1 << endl;
-    cout << "Masukan Id Barang: ";
+    cout << "Masukkan Id Barang: ";
     cin >> tambah->data.id_barang;
 
     cout << "Masukkan Nama Barang: ";
@@ -73,20 +74,23 @@ void tambahBarang(){
         i--;
         continue;;
     }
-
+    cout << endl;
     tambah->next = head;
     head = tambah;
     }
     simpanData();
     cout << "Data Berhasil Ditambahkan" << endl;
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 void tampilBarang() {
     DataBarang* bantu = head;
-    if(!bantu) {
+    if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
         return;
     }
-
+    int jumlah = 0;
     cout << "\n=============================================\n";
     cout << left << setw(10) << "ID_BARANG" 
         << setw(20) << "Nama"
@@ -99,9 +103,14 @@ void tampilBarang() {
              << setw(20) << bantu->data.Nama_barang
              << setw(10) << bantu->data.stok
              << setw(10) << bantu->data.harga << endl;
+             jumlah++;
              bantu =  bantu->next;
     }
-
+    cout << "\n=============================================\n";  
+    cout << "Jumlah Barang: " << jumlah << endl;     
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 
 // search (sequential search)
@@ -116,8 +125,7 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
-
-void menuCari() {
+void cariId() {
     int cari;
     char cari_lagi;
 
@@ -153,7 +161,38 @@ void menuCari() {
         cout << "\n Mau cari barang lain? (y/t)";
         cin >> cari_lagi;
     } while (cari_lagi == 'y' || cari_lagi == 'Y');  
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
+
+void cariNama(){
+
+}
+void cariStok(){
+    
+}
+void menuCari() {
+    int pilihan;
+        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "1. Berdasarkan ID Barang" << endl;
+        cout << "2. Berdasarkan Nama Barang" << endl;
+        cout << "3. Berdasarkan Stok Barang" << endl;
+        cout << "Pilih:";
+        cin >> pilihan;
+        switch(pilihan) {
+            case 1: cariId();
+            break;
+            case 2: cariNama();
+            break;
+            case 3: cariStok();
+            break;
+            default:
+            cout << "Pilihan tidak valid" << endl;
+        }
+}
+
+
 
 void sortBarang(bool asc){
    if (head == NULL) {
@@ -187,23 +226,35 @@ void sortBarang(bool asc){
     } else {
         cout << "Urut secara Descending" << endl;
     }
-    
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 void updateStok(){
     int id_baru;
     int stok_baru;
     cout << "Masukkan ID: ";
     cin >> id_baru;
+
     DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru: ";
         cin>> stok_baru;
+        
+        if(stok_baru < 0) {
+            cout << "Stok tidak boleh negatif" << endl;
+            return;
+        }
+
         ada->data.stok = stok_baru;
         simpanData();
     cout << "Stok berhasil diupdate" << endl;
-
     } else
     cout << "Barang tidak ditemukan" << endl;
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
+
 }
 
 void menuSort() {
@@ -264,6 +315,9 @@ void hapusBarang(){
 
     delete bantu;
     simpanData();
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
 }
 
 int main() {
