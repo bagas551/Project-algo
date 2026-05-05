@@ -39,7 +39,7 @@ void simpanData(){
 
 void tambahBarang(){
     int jumlah;
-    cout << "Jumlah tambah data barang :";
+    cout << "Jumlah barang yang ingin ditambah :";
     cin >> jumlah;
     if (jumlah <= 0) {
         cout << "Data barang harus lebih dari 0" << endl;
@@ -49,7 +49,7 @@ void tambahBarang(){
     for(int i =0; i < jumlah; i++){
     DataBarang* tambah = new DataBarang;
     cout << "Data Barang ke-" << i+1 << endl;
-    cout << "Masukan Id Barang: ";
+    cout << "Masukkan Id Barang: ";
     cin >> tambah->data.id_barang;
 
     cout << "Masukkan Nama Barang: ";
@@ -285,7 +285,7 @@ int main() {
             break;
             case 2: tampilBarang();
             break;
-            case 3:menuSort();
+            case 3: menuSort();
             break;
             case 4: menuCari();
             break;
@@ -293,6 +293,7 @@ int main() {
             break;
             case 6: updateStok();
             break;
+            case 7: cout << "\nTerima kasih! Selesai"
         }
     } while (pilihan != 7);
     return 0;
