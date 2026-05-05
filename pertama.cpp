@@ -125,26 +125,6 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
-void menuCari() {
-    int pilihan;
-        cout << "\n--- FITUR CARI BARANG ---" << endl;
-        cout << "1. Berdasarkan ID Barang" << endl;
-        cout << "2. Berdasarkan Nama Barang" << endl;
-        cout << "3. Berdasarkan Stok Barang" << endl;
-        cout << "Pilih:";
-        cin >> pilihan;
-        switch(pilihan) {
-            case 1: cariId();
-            break;
-            case 2: cariNama();
-            break;
-            case 3: cariStok();
-            break;
-            default:
-            cout << "Pilihan tidak valid" << endl;
-        }
-}
-
 void cariId() {
     int cari;
     char cari_lagi;
@@ -186,7 +166,7 @@ void cariId() {
     cin.get();
 }
 
-void cariNama{
+void cariNama(){
     char keyword[100];
     bool ketemu = false;
 
@@ -211,10 +191,10 @@ void cariNama{
 
     while (bantu){
         if (strstr(bantu->data.Nama_barang, keyword)) {
-            cout << setw(10) << hasil->data.id_barang
-                 << setw(20) << hasil->data.Nama_barang
-                 << setw(10) << hasil->data.stok
-                 << setw(10) << hasil->data.harga << endl;
+            cout << setw(10) << bantu->data.id_barang
+                 << setw(20) << bantu->data.Nama_barang
+                 << setw(10) << bantu->data.stok
+                 << setw(10) << bantu->data.harga << endl;
             ketemu = true;
         }
         bantu = bantu->next;
@@ -228,9 +208,30 @@ void cariNama{
     cin.get();
 
 }
-void cariStok{
+void cariStok(){
 
 }
+
+void menuCari() {
+    int pilihan;
+        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "1. Berdasarkan ID Barang" << endl;
+        cout << "2. Berdasarkan Nama Barang" << endl;
+        cout << "3. Berdasarkan Stok Barang" << endl;
+        cout << "Pilih:";
+        cin >> pilihan;
+        switch(pilihan) {
+            case 1: cariId();
+            break;
+            case 2: cariNama();
+            break;
+            case 3: cariStok();
+            break;
+            default:
+            cout << "Pilihan tidak valid" << endl;
+        }
+}
+
 
 void sortBarang(bool asc){
    if (head == NULL) {
