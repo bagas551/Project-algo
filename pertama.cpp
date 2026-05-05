@@ -268,35 +268,17 @@ int main() {
         cout << "Pilih: ";
         cin >> pilihan;
 
-        switch(menu){
-            case 1: tambahBarang(); break;
-            case 2: tampilBarang(); break;
-            case 3: sortBarang(true); break;
-            case 4: sortBarang(false); break;
-
-            case 5: {
-                int id;
-                cout << "ID: ";
-                cin >> id;
-
-                DataBarang* hasil = cariBarang(id);
-
-                if (hasil)
-                    cout << "Ketemu: " << hasil-> data.nama << endl;
-                    else
-                        cout << "Ga ada\n";\
-                    break;
-            }
-
-            case 6: sortStok(true); break;
-            case 7: hapusBarang(); break;
-            case 8: updateStok(); break;
+        switch(pilihan) {
+            case 1: tambahBarang();
+            break;
+            case 2: tampilBarang();
+            break;
+            case 3: sortBarang();
+            break;
+            case 4: cariBarang();
+            break;
+            case 5: hapusBarang();
+            break;
         }
-
     }
-
-        simpanData();
-    } while(menu !=9);
-
-    return 0;
 }
