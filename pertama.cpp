@@ -157,8 +157,8 @@ void menuCari() {
 }
 
 void sortBarang(bool asc){
-    if (!head){
-        cout << "\n Belum ada barang untuk diurutkan" << endl;
+   if (head == NULL) {
+        cout << "Belum ada data barang" << endl;
         return;
     }
 
@@ -227,31 +227,16 @@ void menuSort() {
 }
 
 void hapusBarang(){
-    int id;
-    cout <<"Masukkan ID: ";
-    cin >> id;
-
-    DataBarang *bantu = head;
-    DataBarang *prev = NULL;
-
-    while (bantu && bantu->data.id_barang != id){
-        prev = bantu;
-        bantu = bantu->next;
-    }
-
-    if (!bantu){
-        cout << "Data tidak ditemukan!\n";
+   int id_hapus;
+   cout << "Masukkan ID yang ingin dihapus: ";
+   cin >> id_hapus;
+   
+   if (head == NULL) {
+        cout << "Belum ada data barang" << endl;
         return;
     }
 
-    if(!prev) {
-        head = bantu->next;
-        cout << "Hapus barang paling didepan\n";
-    } else {
-        prev->next = bantu->next;
-        cout << "Hapus barang ditengah";
-    } 
-    
+
 }
 
 int main() {
