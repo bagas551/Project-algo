@@ -235,6 +235,11 @@ void hapusBarang(){
         cout << "Belum ada data barang" << endl;
         return;
     }
+    DataBarang *bantu = head;
+    DataBarang *prev = NULL;
+
+    while (bantu && bantu->data.id_barang !)
+
 
 
 }
