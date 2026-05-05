@@ -125,6 +125,29 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+<<<<<<< HEAD
+=======
+void menuCari() {
+    int pilihan;
+        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "1. Berdasarkan ID Barang" << endl;
+        cout << "2. Berdasarkan Nama Barang" << endl;
+        cout << "3. Berdasarkan Stok Barang" << endl;
+        cout << "Pilih:";
+        cin >> pilihan;
+        switch(pilihan) {
+            case 1: cariId();
+            break;
+            case 2: cariNama();
+            break;
+            case 3: cariStok();
+            break;
+            default:
+            cout << "Pilihan tidak valid" << endl;
+        }
+}
+
+>>>>>>> 5bf966ff214092c6e715399b46a32e21c09ee302
 void cariId() {
     int cari;
     char cari_lagi;
