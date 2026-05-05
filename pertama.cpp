@@ -19,7 +19,6 @@ DataBarang* head = NULL;
 
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
-    if(data == NULL) {
         if(data == NULL) {
             cout << "Gagal menyimpan file" << endl;
             return;
@@ -36,7 +35,7 @@ void simpanData(){
     }
     fclose(data);
     }
-}
+
 
 void tambahBarang(){
     int jumlah;
@@ -49,7 +48,7 @@ void tambahBarang(){
 
     for(int i =0; i < jumlah; i++){
     DataBarang* tambah = new DataBarang;
-    cout << "Data Barang ke-" << i+1;
+    cout << "Data Barang ke-" << i+1 << endl;
     cout << "Masukan Id Barang: ";
     cin >> tambah->data.id_barang;
 
@@ -172,7 +171,7 @@ void sortBarang(bool asc){
 
             if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
 
-                DataBarang swap = bantu->data;
+                Barang swap = bantu->data;
                 bantu->data = bantu->next->data;
                 bantu->next->data = swap;
 
@@ -239,9 +238,8 @@ void hapusBarang(){
     DataBarang *prev = NULL;
 
 
-    while (bantu && bantu->data.id_barang !)
 
-    while (bantu && bantu->data.id_barang != id){
+    while (bantu && bantu->data.id_barang != id_hapus){
         prev = bantu;
         bantu = bantu->next;
     }
@@ -257,14 +255,14 @@ void hapusBarang(){
     } else {
         prev->next = bantu->next;
 
-        if (bantu->next == NULL)
+        if (bantu->next == NULL) {
         cout << "Hapus barang dibelakang\n";
-
-        else
+        }else {
         cout << "Hapus barang di tengah\n";
+        }
     }
 
-    free(bantu);
+    delete bantu;
     simpanData();
 }
 
@@ -278,7 +276,7 @@ int main() {
         cout << "4. Cari Barang" << endl;
         cout << "5. Hapus Barang" << endl;
         cout << "6. Update Stok" << endl;
-        cout << "Keluar" << endl;
+        cout << "7. Keluar" << endl;
         cout << "Pilih: ";
         cin >> pilihan;
 
@@ -287,12 +285,15 @@ int main() {
             break;
             case 2: tampilBarang();
             break;
-            case 3: sortBarang();
+            case 3:menuSort();
             break;
-            case 4: cariBarang();
+            case 4: menuCari();
             break;
             case 5: hapusBarang();
             break;
+            case 6: updateStok();
+            break;
         }
-    }
+    } while (pilihan != 7);
+    return 0;
 }
