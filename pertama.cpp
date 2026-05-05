@@ -39,20 +39,45 @@ void simpanData(){
 }
 
 void tambahBarang(){
-    DataBarang* tambah = new DataBarang;
+    int jumlah;
+    cout << "Jumlah tambah data barang :";
+    cin >> jumlah;
+    if (jumlah <= 0) {
+        cout << "Data barang harus lebih dari 0" << endl;
+        return;
+    }
 
+    for(int i =0; i < jumlah; i++){
+    DataBarang* tambah = new DataBarang;
+    cout << "Data Barang ke-" << i+1;
     cout << "Masukan Id Barang: ";
     cin >> tambah->data.id_barang;
+
     cout << "Masukkan Nama Barang: ";
-    cin.ignore();
+    cin.ignore(1000, '\n');
     cin.getline(tambah->data.Nama_barang, 100);
+
     cout << "Masukkan Harga Barang: ";
     cin >> tambah->data.harga;
+    if(tambah->data.harga < 0) {
+        cout << "Harga Barang tidak boleh negatif" << endl;
+        delete tambah;
+        i--;
+        continue;
+    }
+
     cout << "Masukkan Stok Barang: ";
     cin >> tambah->data.stok;
+    if(tambah->data.stok < 0) {
+        cout << "Stok Barang tidak boleh negatif" << endl;
+        delete tambah;
+        i--;
+        continue;;
+    }
+
     tambah->next = head;
     head = tambah;
-
+    }
     simpanData();
     cout << "Data Berhasil Ditambahkan" << endl;
 }
@@ -62,14 +87,17 @@ void tampilBarang() {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
         return;
     }
+
+    cout << "\n=============================================\n";
     cout << left << setw(10) << "ID_BARANG" 
-        << setw(15) << "Nama"
-        << setw(15) << "Stok"
+        << setw(20) << "Nama"
+        << setw(10) << "Stok"
         << setw(10) << "Harga" << endl;
-        
+
+    cout << "\n=============================================\n";       
     while(bantu) {
-        cout << setw(10) << bantu->data.id_barang
-             << setw(15) << bantu->data.Nama_barang
+        cout << left << setw(10) << bantu->data.id_barang
+             << setw(20) << bantu->data.Nama_barang
              << setw(10) << bantu->data.stok
              << setw(10) << bantu->data.harga << endl;
              bantu =  bantu->next;
@@ -81,7 +109,6 @@ void tampilBarang() {
 
 DataBarang* cariBarang(int id){
     DataBarang* bantu = head;
-
     while (bantu) {
         if(bantu->data.id_barang == id)
         return bantu;
@@ -90,9 +117,15 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+
 void menuCari() {
     int cari;
     char cari_lagi;
+
+    if (head == NULL) {
+        cout << "Belum ada data barang" << endl;
+        return;
+    }
 
     do {
         cout << "\n--- FITUR CARI BARANG ---" << endl;
@@ -103,9 +136,17 @@ void menuCari() {
 
         if (hasil != NULL) {
             cout << " Berhasil ketemu" << endl;
-            cout << " Nama  : " << hasil->data.Nama_barang << endl;
-            cout << " Stok  : " << hasil->data.stok << endl;
-            cout << " Harga : " << hasil->data.harga << endl;
+            cout << "=====================================\n";
+            cout << left << setw(10) << "ID"
+                 << setw(20) << "Nama"
+                 << setw(10) << "Stok"
+                 << setw(10) << "Harga" << endl;
+            cout << "=====================================\n";
+               
+            cout << setw(10) << hasil->data.id_barang
+                 << setw(20) << hasil->data.Nama_barang
+                 << setw(10) << hasil->data.stok
+                 << setw(10) << hasil->data.harga << endl;
         } else {
             cout << " Yaahh Barang ini ga ketemu" << endl;
         }
@@ -193,7 +234,7 @@ void hapusBarang(){
     DataBarang *bantu = head;
     DataBarang *prev = NULL;
 
-    while (bantu && bantu->data.id != id){
+    while (bantu && bantu->data.id_barang != id){
         prev = bantu;
         bantu = bantu->next;
     }
@@ -213,21 +254,19 @@ void hapusBarang(){
     
 }
 
-int main () {
-    int menu;
-
+int main() {
+    int pilihan;
     do {
-        cout << " === TOKOK SWALAYAN ====\n";
-        cout << "1. Tambah Barang\n";
-        cout << "2. Lihat Barang\n";
-        cout << "3. Urut harga\n";
-        cout << "4. Cari Barang\n ";
-        cout << "5. Urut Stock\n";
-        cout << "6. Hapus\n";
-        cout << "7. Update Stock\n";
-        cout << "8. Keluar\n";
+        cout << "\n===== TOKO SWALAYAN =====\n";
+        cout << "1. Tambah Barang" << endl;
+        cout << "2. Lihat Barang" << endl;
+        cout << "3. Urut Harga" << endl;
+        cout << "4. Cari Barang" << endl;
+        cout << "5. Hapus Barang" << endl;
+        cout << "6. Update Stok" << endl;
+        cout << "Keluar" << endl;
         cout << "Pilih: ";
-        cin >> menu;
+        cin >> pilihan;
 
         switch(menu){
             case 1: tambahBarang(); break;
