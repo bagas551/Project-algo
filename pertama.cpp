@@ -18,6 +18,7 @@ struct DataBarang{
 
 DataBarang* head = NULL;
 
+// Baca data
 void bacaData() {
     FILE *data = fopen("swalayan.txt", "r");
     if (data == NULL){
@@ -113,24 +114,32 @@ void tambahBarang(){
     cin.get();
 }
 void tampilBarang() {
+    bacaData();
+    
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
         return;
     }
     int jumlah = 0;
-    cout << "\n=============================================\n";
-    cout << left << setw(10) << "ID_BARANG" 
-        << setw(20) << "Nama"
-        << setw(10) << "Stok"
-        << setw(10) << "Harga" << endl;
+    cout << "\n" << setfill('=') << setw(67) << "=" << endl;
+    cout << setfill(' ');
 
-    cout << "\n=============================================\n";       
+    cout << left << "|" << setw(10) << "ID_BARANG" 
+         << "|"  << setw(20) << "Nama"
+         << "|"  << setw(10) << "Stok"
+         << "|"  << setw(15) << "Harga" << endl;
+
+    cout << setfill('=') << setw(67) << "=" << endl;
+    cout << setfill(' ');
+
     while(bantu) {
-        cout << left << setw(10) << bantu->data.id_barang
-             << setw(20) << bantu->data.Nama_barang
-             << setw(10) << bantu->data.stok
-             << setw(10) << bantu->data.harga << endl;
+        cout << "|";
+        cout << right << setfill('0') << setw(5) << bantu->data.id_barang
+             << left << setfill(' ') << setw(5) << ""     
+             << "|"  << setw(20) << bantu->data.Nama_barang
+             << "|"  << setw(10) << bantu->data.stok
+             << "| Rp "  << setw(12) << bantu->data.harga << endl;
              jumlah++;
              bantu =  bantu->next;
     }
@@ -155,7 +164,7 @@ DataBarang* cariBarang(int id){
 }
 void cariId() {
     int cari;
-    char cari_lagi;
+    char id_cari;
 
     if (head == NULL) {
         cout << "Belum ada data barang" << endl;
@@ -187,15 +196,15 @@ void cariId() {
         }
         
         cout << "\n Mau cari barang lain? (y/t)";
-        cin >> cari_lagi;
-    } while (cari_lagi == 'y' || cari_lagi == 'Y');  
+        cin >> id_cari;
+    } while (id_cari == 'y' || id_cari == 'Y');  
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore();
     cin.get();
 }
 
 void cariNama(){
-    char keyword[100];
+    char dicari[100];
     bool ketemu = false;
 
     if (head == NULL) {
@@ -205,7 +214,7 @@ void cariNama(){
 
     cout << "Masukkan nama yang dicari: ";
     cin.ignore(1000, '\n');
-    cin.getline(keyword, 100);
+    cin.getline(dicari, 100);
 
     DataBarang* bantu = head;
 
@@ -218,7 +227,7 @@ void cariNama(){
         cout << "=====================================\n";
 
     while (bantu){
-        if (strstr(bantu->data.Nama_barang, keyword)) {
+        if (strstr(bantu->data.Nama_barang, dicari)) {
             cout << setw(10) << bantu->data.id_barang
                  << setw(20) << bantu->data.Nama_barang
                  << setw(10) << bantu->data.stok
@@ -237,7 +246,41 @@ void cariNama(){
 
 }
 void cariStok(){
+    if (head == NULL){
+        cout << "\n Belum ada data barang di rak!" << endl;
+        return;
+    }
 
+    int cari_stok;
+    cout << "\n=== CARI BERDASARKAN STOK ===" << endl;
+    cout << "Masukkan jumlah stok yang ingin dicari: ";
+    cin >> cari_stok;
+
+    DataBarang* bantu = head;
+    bool ketemu = false;
+
+    cout << "=====================================\n";
+    cout << left << setw(10) << "ID"
+         << setw(20) << "Nama"
+         << setw(10) << "Stok"
+         << setw(10) << "Harga" << endl;
+    cout << "=====================================\n";
+
+    while (bantu != NULL) {
+        if (bantu->data.stok == cari_stok) {
+            cout << left << setw(10) << bantu->data.id_barang
+                 << setw(20) << bantu->data.Nama_barang
+                 << setw(20) << bantu->data.stok
+                 << setw(20) << bantu->data.harga << endl;
+            ketemu = true;
+        }
+        bantu = bantu->next;
+    }
+
+    if (ketemu == false) {
+        cout << "Barang dengan jumlah stok " << cari_stok << "tidak ditemukan" << endl;
+    }
+    cout << "=======================================\n";
 }
 
 void menuCari() {
@@ -388,18 +431,34 @@ void hapusBarang(){
 }
 
 int main() {
+    bacaData();
+
     int pilihan;
     do {
-        cout << "\n===== TOKO SWALAYAN =====\n";
-        cout << "1. Tambah Barang" << endl;
-        cout << "2. Lihat Barang" << endl;
-        cout << "3. Urut Harga" << endl;
-        cout << "4. Cari Barang" << endl;
-        cout << "5. Hapus Barang" << endl;
-        cout << "6. Update Stok" << endl;
-        cout << "7. Keluar" << endl;
+        system("cls");
+        cout << "\n" << setfill('=') << setw(35) << "=" << endl;
+        cout << setfill(' '); 
+
+        cout << "| " << left << setw(31) << "       TOKO SWALAYAN APIP " << " |\n";
+        
+        cout << setfill('=') << setw(35) << "=" << endl;
+        cout << setfill(' '); 
+
+        cout << "|  1  | " << left << setw(25) << "Tambah Barang" << " |\n";
+        cout << "|  2  | " << left << setw(25) << "Lihat Barang"  << " |\n";
+        cout << "|  3  | " << left << setw(25) << "Urut Harga"    << " |\n";
+        cout << "|  4  | " << left << setw(25) << "Cari Barang"   << " |\n";
+        cout << "|  5  | " << left << setw(25) << "Hapus Barang"  << " |\n";
+        cout << "|  6  | " << left << setw(25) << "Update Stok"   << " |\n";
+        cout << "|  7  | " << left << setw(25) << "Keluar"        << " |\n";
+
+        cout << setfill('-') << setw(35) << "-" << endl;
+        cout << setfill(' '); 
+
         cout << "Pilih: ";
         cin >> pilihan;
+		cout << endl;
+        
 
         switch(pilihan) {
             case 1: tambahBarang();
