@@ -85,7 +85,7 @@ void bacaData() {
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
         if(data == NULL) {
-            cout << "Gagal menyimpan file" << endl;
+            cout << "Gagal menyimpan file. Coba lagi" << endl;
             return;
                 }
     DataBarang* bantu = head;
@@ -133,7 +133,7 @@ void tambahBarang(){
     cout << "Harga Barang    : ";
     cin >> tambah->data.harga;
     if(tambah->data.harga < 0) {
-        cout << "Harga Barang tidak boleh negatif" << endl;
+        cout << "Harga Barang tidak boleh bernilai negatif" << endl;
         delete tambah;
         i--;
         continue;
@@ -142,7 +142,7 @@ void tambahBarang(){
     cout << "Stok Barang     : ";
     cin >> tambah->data.stok;
     if(tambah->data.stok < 0) {
-        cout << "Stok Barang tidak boleh negatif" << endl;
+        cout << "Stok Barang tidak boleh bernilai negatif" << endl;
         delete tambah;
         i--;
         continue;;
@@ -165,7 +165,7 @@ void tampilBarang() {
     cout << "+-----------------------------------------------------------------+" << endl;
     DataBarang* bantu = head;
     if(head == NULL) {
-        cout << "Belum ada Barang di Toko Swalayan" << endl;
+        cout << "Belum ada Barang di Toko" << endl;
         cout << "\nTekan enter untuk kembali ke menu...";
         cin.ignore(1000,'\n');
         cin.get();
@@ -341,7 +341,7 @@ void menuCari() {
             case 3: cariStok();
             break;
             default:
-            cout << "Pilihan tidak valid" << endl;
+            cout << "Pilihan tidak valid. Coba lagi" << endl;
         }
 }
 
@@ -394,7 +394,7 @@ void updateStok(){
         cin>> stok_baru;
         
         if(stok_baru < 0) {
-            cout << "Stok tidak boleh negatif" << endl;
+            cout << "Stok tidak boleh bernilai negatif" << endl;
             return;
         }
 
@@ -414,7 +414,7 @@ void menuSort() {
     cout << "\n === Urut Berdasarkan Harga ===" << endl;
     cout << "1. Ascending" << endl;
     cout << "2. Descending" << endl;
-    cout << "Pilih urutan (1/2): ";
+    cout << "Pilih (1/2): ";
     cin >> pilihanSort;
 
     if (pilihanSort == 1) {
