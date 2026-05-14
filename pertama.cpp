@@ -488,7 +488,7 @@ int main() {
             break;
             case 2: tampilBarang();
             break;
-            case 3:menuSort();
+            case 3: menuSort();
             break;
             case 4: menuCari();
             break;
