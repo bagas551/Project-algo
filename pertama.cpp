@@ -160,7 +160,9 @@ void tambahBarang(){
 cout << setfill(' ');
 }
 void tampilBarang() {
-    
+    cout << "+-----------------------------------------------------------------+" << endl;
+    cout << "|                         TAMPIL BARANG                           |" << endl;
+    cout << "+-----------------------------------------------------------------+" << endl;
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
