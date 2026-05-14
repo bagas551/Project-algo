@@ -479,7 +479,7 @@ int main() {
     do {
         system("cls");
        menuHeader(); 
-        cout << "Pilih: ";
+        cout << "Pilih Menu: ";
         cin >> pilihan;
 		cout << endl;
         
