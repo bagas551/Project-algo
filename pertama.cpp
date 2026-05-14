@@ -39,14 +39,14 @@ void menuHeader(){
    cout << setfill(' ');
 }
 void tampilHeader(){
-    cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "-" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
+    cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
     cout << setfill(' ');
 
      cout << "|"
          << setw(1)  << " " << "ID Barang"    << setw(1) << " " << "|"
-         << setw(8)  << " " << "Nama Barang"  <<  setw(7) <<  " "  << "|"
-         << setw(5)  << " " << "Stok"         << setw(4) << " " << "|"
-         << setw(7)  << " " << "Harga"        << setw(6) << " " << "|"
+         << setw(6)  << " " << "Nama Barang"  <<  setw(5) <<  " "  << "|"
+         << setw(4)  << " " << "Stok"         << setw(4) << " " << "|"
+         << setw(7)  << " " << "Harga"        << setw(5) << " " << "|"
          << endl;
 
     cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
@@ -160,11 +160,10 @@ void tambahBarang(){
 cout << setfill(' ');
 }
 void tampilBarang() {
-    cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
-	cout << "|" << setfill(' ') << setw(26) << "             TAMPIL BARANG           " << setw(16) << "     |" << endl;
-	cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
+    cout << "+" << setfill('-') << setw(11) << "-" << setw(22) << "-" <<setw(12) << "-"  << setw(20) << "-" << "+" << endl;
+	cout << "|" << setfill(' ') << setw(30) << "             TAMPIL BARANG           " << setw(36) << "     |" << endl;
+    cout << "+" << setfill('-') << setw(11) << "-" << setw(22) << "-" <<setw(12) << "-"  << setw(20) << "-" << "+" << endl;
 	cout << setfill(' ');
-	tampilHeader();
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
@@ -181,15 +180,16 @@ void tampilBarang() {
 
     while(bantu) {
         cout << "|";
-        cout << right << setfill('0') << setw(5) << bantu->data.id_barang
-             << left << setfill(' ') << setw(5) << ""     
-             << "|"  << setw(20) << bantu->data.Nama_barang
-             << "|"  << setw(10) << bantu->data.stok
-             << "| Rp "  << setw(12) << bantu->data.harga << endl;
+        cout << right << setfill('0') << setw(5) << bantu->data.id_barang << left << setfill(' ') 
+        << setw(6) << "" << "|"  << setw(22) << bantu->data.Nama_barang
+           << "|"  << setw(10) << bantu->data.stok
+             << "  | Rp "  << setw(13) << bantu->data.harga << "|"<< endl;
              jumlah++;
              bantu =  bantu->next;
     }
-    cout << "Jumlah Barang: " << jumlah << endl;     
+    cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
+
+    cout << "Jumlah Barang     : " << jumlah << endl;     
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore(1000,'\n');
     cin.get();
