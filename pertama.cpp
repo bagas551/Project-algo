@@ -17,14 +17,29 @@ struct DataBarang{
 };
 
 DataBarang* head = NULL;
+
+//TAMPILAN 
 void menuHeader(){
-    cout << "+" << setfill ('-') << setw(61) << "-" << "+" << endl;
-    cout << "|" << setfill ( ' ') << setw(36) << "GrocerEase" << setw(25) << "|" << endl;
-    cout << "+" << setfill ('-') << setw(61) << "-" << "+" << endl;
-    cout << setfill(' ');
+	cout << right;
+    cout << "+" << setfill('-') << setw(7) << "+" << setw(36) << "+" << endl;
+	cout << "|" << setfill(' ') << setw(25) << "GrocerEase" << setw(18) << "|" << endl;
+	cout << "+" << setfill('-') << setw(7) << "+" << setw(36) << "+" << endl;
+	cout << setfill(' ');
+	cout << "| " << left << setw(4) << " No" << " | " << setw(32) << "        Menu     " << "  |" << endl;
+	cout << "+" << setfill('-') << setw(6) << ""<< "+" << setw(35) << "" << "+" << endl;	
+	cout << setfill(' ');
+	cout << "| " << left << setw(4) << " 1" << " | " << setw(32) << "   Tambah Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 2" << " | " << setw(32) << "   Lihat Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 3" << " | " << setw(32) << "   Urut Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 4" << " | " << setw(32) << "   Cari Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 5" << " | " << setw(32) << "   Hapus Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 6" << " | " << setw(32) << "   Update Stok Barang" << "  |" << endl;
+	cout << "| " << left << setw(4) << " 7" << " | " << setw(32) << "   Keluar" << "  |" << endl;
+   cout << "+" << setfill('-') << setw(6) << ""<< "+" << setw(35) << ""<< "+" << endl;	
+   cout << setfill(' ');
 }
 void tampilHeader(){
-    cout << "+" << setfill('=') << setw(11) << "=" << "+" << setw(22) << "=" << "+" <<setw(12) << "=" << "+" << setw(17) << "=" << "+" << endl;
+    cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "-" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
     cout << setfill(' ');
 
      cout << "|"
@@ -34,7 +49,7 @@ void tampilHeader(){
          << setw(7)  << " " << "Harga"        << setw(6) << " " << "|"
          << endl;
 
-    cout << "+" << setfill('=') << setw(11) << "=" << "+" << setw(22) << "=" << "+" <<setw(12) << "=" << "+" << setw(17) << "=" << "+" << endl;
+    cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
     cout << setfill(' ');
 }
 // Baca data
@@ -66,6 +81,7 @@ void bacaData() {
 
     fclose(data);
 }
+
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
         if(data == NULL) {
@@ -85,28 +101,36 @@ void simpanData(){
     fclose(data);
     }
 
-
+// 1. MENU TAMBAH BARANG
 void tambahBarang(){
+    cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
+	cout << "|" << setfill(' ') << setw(26) << "             TAMBAH BARANG           " << setw(16) << "     |" << endl;
+	cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
+	cout << setfill(' ');
     int jumlah;
-    cout << "Jumlah tambah data barang :";
+    cout << "Jumlah tambah data barang : ";
     cin >> jumlah;
     if (jumlah <= 0) {
         cout << "Data barang harus lebih dari 0" << endl;
+        cout << "\nTekan enter untuk kembali ke menu...";
+        cin.ignore(1000,'\n');
+        cin.get();
         return;
     }
 
     for(int i =0; i < jumlah; i++){
     DataBarang* tambah = new DataBarang;
-    cout << "Data Barang ke-" << i+1 << endl;
-
-    cout << "Masukkan Id Barang: ";
+    
+    cout << "\nData Barang ke-" << i+1 << endl;
+	cout << endl;
+    cout << "Id Barang       : ";
     cin >> tambah->data.id_barang;
     cin.ignore(1000, '\n');
 
-    cout << "Masukkan Nama Barang: ";
+    cout << "Nama Barang     : ";
     cin.getline(tambah->data.Nama_barang, 100);
 
-    cout << "Masukkan Harga Barang: ";
+    cout << "Harga Barang    : ";
     cin >> tambah->data.harga;
     if(tambah->data.harga < 0) {
         cout << "Harga Barang tidak boleh negatif" << endl;
@@ -115,7 +139,7 @@ void tambahBarang(){
         continue;
     }
 
-    cout << "Masukkan Stok Barang: ";
+    cout << "Stok Barang     : ";
     cin >> tambah->data.stok;
     if(tambah->data.stok < 0) {
         cout << "Stok Barang tidak boleh negatif" << endl;
@@ -132,24 +156,27 @@ void tambahBarang(){
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore(1000,'\n');
     cin.get();
+    cout << left;
+cout << setfill(' ');
 }
 void tampilBarang() {
-    
+    cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
+	cout << "|" << setfill(' ') << setw(26) << "             TAMPIL BARANG           " << setw(16) << "     |" << endl;
+	cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
+	cout << setfill(' ');
+	tampilHeader();
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
+        cout << "\nTekan enter untuk kembali ke menu...";
+        cin.ignore(1000,'\n');
+        cin.get();
         return;
     }
     int jumlah = 0;
-    cout << "\n" << setfill('=') << setw(67) << "=" << endl;
     cout << setfill(' ');
-
-    cout << left << "|" << setw(10) << "ID_BARANG" 
-         << "|"  << setw(20) << "Nama"
-         << "|"  << setw(10) << "Stok"
-         << "|"  << setw(15) << "Harga" << endl;
-
-    cout << setfill('=') << setw(67) << "=" << endl;
+    tampilHeader();
+   
     cout << setfill(' ');
 
     while(bantu) {
@@ -162,7 +189,6 @@ void tampilBarang() {
              jumlah++;
              bantu =  bantu->next;
     }
-    cout << "\n=============================================\n";  
     cout << "Jumlah Barang: " << jumlah << endl;     
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore(1000,'\n');
@@ -187,6 +213,9 @@ void cariId() {
 
     if (head == NULL) {
         cout << "Belum ada data barang" << endl;
+        cout << "\nTekan enter untuk kembali ke menu...";
+        cin.ignore(1000,'\n');
+        cin.get();
         return;
     }
 
@@ -228,22 +257,19 @@ void cariNama(){
 
     if (head == NULL) {
         cout << "Belum ada data barang\n";
+         cout << "\nTekan enter untuk kembali ke menu...";
+         cin.ignore();
+         cin.get(); 
         return;
     }
 
     cout << "Masukkan nama yang dicari: ";
     cin.ignore(1000, '\n');
     cin.getline(dicari, 100);
-
     DataBarang* bantu = head;
 
     cout << "\nHasil Pencarian: \n";
-        cout << "=====================================\n";
-        cout << left << setw(10) << "ID"
-             << setw(20) << "Nama"
-             << setw(10) << "Stok"
-             << setw(10) << "Harga" << endl;
-        cout << "=====================================\n";
+       menuHeader();
 
     while (bantu){
         if (strstr(bantu->data.Nama_barang, dicari)) {
@@ -258,18 +284,22 @@ void cariNama(){
 
     if (!ketemu) {
         cout << "Barang tidak ditemukan";
+        
     }
 
     cout << "\nTekan enter untuk kembali ke menu";
-    cin.get();
+    cin.ignore();
+    cin.get(); 
 
 }
 void cariStok(){
     if (head == NULL){
         cout << "\n Belum ada data barang di rak!" << endl;
+         cout << "\nTekan enter untuk kembali ke menu";
+         cin.ignore();
+         cin.get(); 
         return;
     }
-
     int cari_stok;
     cout << "\n=== CARI BERDASARKAN STOK ===" << endl;
     cout << "Masukkan jumlah stok yang ingin dicari: ";
@@ -277,13 +307,7 @@ void cariStok(){
 
     DataBarang* bantu = head;
     bool ketemu = false;
-
-    cout << "=====================================\n";
-    cout << left << setw(10) << "ID"
-         << setw(20) << "Nama"
-         << setw(10) << "Stok"
-         << setw(10) << "Harga" << endl;
-    cout << "=====================================\n";
+    menuHeader();
 
     while (bantu != NULL) {
         if (bantu->data.stok == cari_stok) {
@@ -455,23 +479,11 @@ int main() {
     int pilihan;
     do {
         system("cls");
-       menuheader(); 
-        cout << "|  1  | " << left << setw(25) << "Tambah Barang" << " |\n";
-        cout << "|  2  | " << left << setw(25) << "Lihat Barang"  << " |\n";
-        cout << "|  3  | " << left << setw(25) << "Urut Harga"    << " |\n";
-        cout << "|  4  | " << left << setw(25) << "Cari Barang"   << " |\n";
-        cout << "|  5  | " << left << setw(25) << "Hapus Barang"  << " |\n";
-        cout << "|  6  | " << left << setw(25) << "Update Stok"   << " |\n";
-        cout << "|  7  | " << left << setw(25) << "Keluar"        << " |\n";
-
-        cout << setfill('-') << setw(35) << "-" << endl;
-        cout << setfill(' '); 
-
+       menuHeader(); 
         cout << "Pilih: ";
         cin >> pilihan;
 		cout << endl;
         
-
         switch(pilihan) {
             case 1: tambahBarang();
             break;
