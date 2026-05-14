@@ -160,10 +160,7 @@ void tambahBarang(){
 cout << setfill(' ');
 }
 void tampilBarang() {
-    cout << "+" << setfill('-') << setw(11) << "-" << setw(22) << "-" <<setw(12) << "-"  << setw(20) << "-" << "+" << endl;
-	cout << "|" << setfill(' ') << setw(30) << "             TAMPIL BARANG           " << setw(36) << "     |" << endl;
-    cout << "+" << setfill('-') << setw(11) << "-" << setw(22) << "-" <<setw(12) << "-"  << setw(20) << "-" << "+" << endl;
-	cout << setfill(' ');
+    
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko Swalayan" << endl;
