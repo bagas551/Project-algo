@@ -291,38 +291,64 @@ void cariNama(){
     cin.get(); 
 
 }
-void cariStok(){
-    if (head == NULL){
-        cout << "\n Belum ada data barang di rak!" << endl;
-         cout << "\nTekan enter untuk kembali ke menu";
-         cin.ignore();
-         cin.get(); 
+void cariStok() {
+
+    if (head == NULL) {
+
+        cout << "\nBelum ada data barang di rak!" << endl;
+        cout << "\nTekan enter untuk kembali...";
+        cin.ignore();
+        cin.get();
         return;
     }
+
     int cari_stok;
-    cout << "\n=== CARI BERDASARKAN STOK ===" << endl;
-    cout << "Masukkan jumlah stok yang ingin dicari: ";
+
+    cout << "\n====================================";
+    cout << "\n     CARI BERDASARKAN STOK";
+    cout << "\n====================================";
+
+    cout << "\nMasukkan jumlah stok : ";
     cin >> cari_stok;
 
     DataBarang* bantu = head;
     bool ketemu = false;
-    menuHeader();
+
+    cout << "\n";
+    cout << "+=======================================================+\n";
+    cout << "| ID      | Nama Barang      | Stok    | Harga         |\n";
+    cout << "+=======================================================+\n";
 
     while (bantu != NULL) {
+
         if (bantu->data.stok == cari_stok) {
-            cout << left << setw(10) << bantu->data.id_barang
-                 << setw(20) << bantu->data.Nama_barang
-                 << setw(20) << bantu->data.stok
-                 << setw(20) << bantu->data.harga << endl;
+
+            cout << "| "
+                 << left << setw(8) << bantu->data.id_barang
+                 << "| "
+                 << setw(18) << bantu->data.Nama_barang
+                 << "| "
+                 << setw(8) << bantu->data.stok
+                 << "| Rp "
+                 << setw(10) << bantu->data.harga
+                 << "|\n";
+
             ketemu = true;
         }
+
         bantu = bantu->next;
     }
 
-    if (ketemu == false) {
-        cout << "Barang dengan jumlah stok " << cari_stok << "tidak ditemukan" << endl;
+    if (!ketemu) {
+
+        cout << "| Barang dengan stok tersebut tidak ditemukan!          |\n";
     }
-    cout << "=======================================\n";
+
+    cout << "+=======================================================+\n";
+
+    cout << "\nTekan enter untuk kembali...";
+    cin.ignore();
+    cin.get();
 }
 
 void menuCari() {
