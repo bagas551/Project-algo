@@ -420,7 +420,7 @@ void sortBarang(bool asc){
     if (asc == true) {
         cout << "\nASCENDING (Murah ke Mahal)" << endl;
     } else {
-        cout << "\nUrut secara Descending" << endl;
+        cout << "\nUrut Descending (Mahal ke Murah)" << endl;
     }
     
 }
@@ -455,8 +455,8 @@ void menuSort() {
     int pilihanSort;
 
     cout << "\n=== Urut Berdasarkan Harga ===" << endl;
-    cout << "1. Ascending" << endl;
-    cout << "2. Descending" << endl;
+    cout << "1. Ascending (Murah ke Mahal)" << endl;
+    cout << "2. Descending (Mahal ke Murah)" << endl;
     cout << "Pilih urutan (1/2): ";
     cin >> pilihanSort;
 
