@@ -385,7 +385,7 @@ void sortBarang(bool asc){
 void updateStok(){
     int id_baru;
     int stok_baru;
-    cout << "Masukkan ID: ";
+    cout << "Masukkan ID Barang: ";
     cin >> id_baru;
 
     DataBarang* ada = cariBarang(id_baru);
