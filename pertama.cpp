@@ -457,7 +457,7 @@ void menuSort() {
     cout << "\n=== Urut Berdasarkan Harga ===" << endl;
     cout << "1. Ascending (Murah ke Mahal)" << endl;
     cout << "2. Descending (Mahal ke Murah)" << endl;
-    cout << "Pilih urutan (1/2): ";
+    cout << "Pilih urutan (1/2) : ";
     cin >> pilihanSort;
 
     switch (pilihanSort) {
@@ -483,7 +483,7 @@ void menuSort() {
 
 void hapusBarang(){
    int id_hapus;
-   cout << "Masukkan ID yang ingin dihapus: ";
+   cout << "Masukkan ID yang ingin dihapus : ";
    cin >> id_hapus;
    
    if (head == NULL) {
