@@ -346,7 +346,7 @@ void cariStok() {
 
     cout << "+=======================================================+\n";
 
-    cout << "\nTekan enter untuk kembali...";
+    cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore();
     cin.get();
 }
