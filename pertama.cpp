@@ -221,7 +221,7 @@ void cariId() {
 
     do {
         cout << "\n--- FITUR CARI BARANG ---" << endl;
-        cout << "Masukkan ID Barang yang mau dicari: ";
+        cout << "Masukkan ID Barang yang mau dicari : ";
         cin >> cari;
 
         DataBarang* hasil = cariBarang(cari);
@@ -240,7 +240,7 @@ void cariId() {
                  << setw(10) << hasil->data.stok
                  << setw(10) << hasil->data.harga << endl;
         } else {
-            cout << " Yaahh Barang ini ga ketemu" << endl;
+            cout << "Maaf barang tidak ditemukan" << endl;
         }
         
         cout << "\n Mau cari barang lain? (y/t): ";
@@ -305,7 +305,7 @@ void cariNama() {
 
     cout << "+-----------------------------------------------------------+\n";
 
-    cout << "\nTekan enter untuk kembali...";
+    cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.get();
 }
 
