@@ -226,7 +226,7 @@ void cariId() {
         DataBarang* hasil = cariBarang(cari);
 
         if (hasil != NULL) {
-            cout << " Berhasil ketemu" << endl;
+            cout << " Barang Berhasil Ditemukan!" << endl;
             cout << "=====================================\n";
             cout << left << setw(10) << "ID"
                  << setw(20) << "Nama"
