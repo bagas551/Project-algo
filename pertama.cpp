@@ -109,7 +109,7 @@ void tambahBarang(){
 	cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
 	cout << setfill(' ');
     int jumlah;
-    cout << "Jumlah tambah data barang : ";
+    cout << "Masukkan jumlah data barang : ";
     cin >> jumlah;
     if (jumlah <= 0) {
         cout << "Data barang harus lebih dari 0" << endl;
@@ -243,7 +243,7 @@ void cariId() {
             cout << " Yaahh Barang ini ga ketemu" << endl;
         }
         
-        cout << "\n Mau cari barang lain? (y/t)";
+        cout << "\n Mau cari barang lain? (y/t): ";
         cin >> id_cari;
     } while (id_cari == 'y' || id_cari == 'Y');  
     cout << "\nTekan enter untuk kembali ke menu...";
@@ -375,7 +375,7 @@ void menuCari() {
         cout << "1. Berdasarkan ID Barang" << endl;
         cout << "2. Berdasarkan Nama Barang" << endl;
         cout << "3. Berdasarkan Stok Barang" << endl;
-        cout << "Pilih:";
+        cout << "Pilih fitur : ";
         cin >> pilihan;
         switch(pilihan) {
             case 1: cariId();
@@ -385,7 +385,7 @@ void menuCari() {
             case 3: cariStok();
             break;
             default:
-            cout << "Pilihan tidak valid. Coba lagi" << endl;
+            cout << "Pilihan tidak valid. Coba lagi!" << endl;
         }
 }
 
@@ -418,7 +418,7 @@ void sortBarang(bool asc){
 
     cout << "\n Data berhasil diurutkan";
     if (asc == true) {
-        cout << "\nASCENDING (Murah ke Mahal)" << endl;
+        cout << "\nurut ASCENDING (Murah ke Mahal)" << endl;
     } else {
         cout << "\nUrut Descending (Mahal ke Murah)" << endl;
     }
@@ -502,7 +502,7 @@ void hapusBarang(){
 
     if (bantu == NULL){
 
-    cout << "\nMaaf, data tidak ditemukan. Coba input ulang ";
+    cout << "\nMaaf, data tidak ditemukan. Coba input ulang! ";
 
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore();
