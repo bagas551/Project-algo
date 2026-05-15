@@ -314,7 +314,7 @@ void cariStok() {
     if (head == NULL) {
 
         cout << "\nBelum ada data barang di rak!" << endl;
-        cout << "\nTekan enter untuk kembali...";
+        cout << "\nTekan enter untuk kembali ke menu utama...";
         cin.ignore();
         cin.get();
         return;
@@ -364,7 +364,7 @@ void cariStok() {
 
     cout << "+=======================================================+\n";
 
-    cout << "\nTekan enter untuk kembali...";
+    cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore();
     cin.get();
 }
@@ -420,7 +420,7 @@ void sortBarang(bool asc){
     if (asc == true) {
         cout << "\nurut ASCENDING (Murah ke Mahal)" << endl;
     } else {
-        cout << "\nUrut Descending (Mahal ke Murah)" << endl;
+        cout << "\nUrut DESCENDING (Mahal ke Murah)" << endl;
     }
     
 }
@@ -432,7 +432,7 @@ void updateStok(){
 
     DataBarang* ada = cariBarang(id_baru);
     if(ada) {
-        cout << "Masukkan stok baru: ";
+        cout << "Masukkan stok baru : ";
         cin>> stok_baru;
         
         if(stok_baru < 0) {
