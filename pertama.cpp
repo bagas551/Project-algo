@@ -378,9 +378,6 @@ void sortBarang(bool asc){
     } else {
         cout << "Urut secara Descending" << endl;
     }
-    cout << "\nTekan enter untuk kembali ke menu...";
-    cin.ignore();
-    cin.get();
 }
 void updateStok(){
     int id_baru;
