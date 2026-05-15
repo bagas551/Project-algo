@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -226,13 +227,13 @@ void cariId() {
         DataBarang* hasil = cariBarang(cari);
 
         if (hasil != NULL) {
-            cout << " Barang Berhasil Ditemukan!" << endl;
-            cout << "=====================================\n";
+            cout << "\nBarang Berhasil Ditemukan!" << endl;
+            cout << "===============================================\n";
             cout << left << setw(10) << "ID"
                  << setw(20) << "Nama"
                  << setw(10) << "Stok"
                  << setw(10) << "Harga" << endl;
-            cout << "=====================================\n";
+            cout << "================================================\n";
                
             cout << setw(10) << hasil->data.id_barang
                  << setw(20) << hasil->data.Nama_barang
@@ -250,47 +251,64 @@ void cariId() {
     cin.get();
 }
 
-void cariNama(){
+void cariNama() {
+
     char dicari[100];
     bool ketemu = false;
 
     if (head == NULL) {
-        cout << "Belum ada data barang\n";
-         cout << "\nTekan enter untuk kembali ke menu...";
-         cin.ignore();
-         cin.get(); 
+        cout << "Belum ada data barang!\n";
         return;
     }
 
-    cout << "Masukkan nama yang dicari: ";
-    cin.ignore(1000, '\n');
+    cout << "\n====================================";
+    cout << "\n       CARI BERDASARKAN NAMA";
+    cout << "\n====================================";
+
+    cout << "\nMasukkan nama barang : ";
+    cin.ignore();
     cin.getline(dicari, 100);
+
     DataBarang* bantu = head;
 
-    cout << "\nHasil Pencarian: \n";
-       menuHeader();
+    cout << "\n";
+    cout << "+-----------------------------------------------------------+\n";
+    cout << "|                    HASIL PENCARIAN                        |\n";
+    cout << "+----------+--------------------+-----------+---------------+\n";
+    cout << "| ID       | Nama Barang        | Stok       | Harga         |\n";
+    cout << "+----------+--------------------+-----------+---------------+\n";
 
-    while (bantu){
+    while (bantu != NULL) {
+
         if (strstr(bantu->data.Nama_barang, dicari)) {
-            cout << setw(10) << bantu->data.id_barang
+
+            cout << "| "
+                 << left << setw(9) << bantu->data.id_barang
+                 << "| "
                  << setw(20) << bantu->data.Nama_barang
-                 << setw(10) << bantu->data.stok
-                 << setw(10) << bantu->data.harga << endl;
+                 << "| "
+                 << setw(12) << bantu->data.stok
+                 << "| Rp "
+                 << right << setw(10) << bantu->data.harga
+                 << " |\n";
+
             ketemu = true;
         }
+
         bantu = bantu->next;
     }
 
     if (!ketemu) {
-        cout << "Barang tidak ditemukan";
-        
+
+        cout << "|                Barang tidak ditemukan!                   |\n";
     }
 
-    cout << "\nTekan enter untuk kembali ke menu";
-    cin.ignore();
-    cin.get(); 
+    cout << "+-----------------------------------------------------------+\n";
 
+    cout << "\nTekan enter untuk kembali...";
+    cin.get();
 }
+
 void cariStok() {
 
     if (head == NULL) {
@@ -346,7 +364,7 @@ void cariStok() {
 
     cout << "+=======================================================+\n";
 
-    cout << "\nTekan enter untuk kembali ke menu...";
+    cout << "\nTekan enter untuk kembali...";
     cin.ignore();
     cin.get();
 }
@@ -400,10 +418,11 @@ void sortBarang(bool asc){
 
     cout << "\n Data berhasil diurutkan";
     if (asc == true) {
-        cout << "ASCENDING (Murah ke Mahal)" << endl;
+        cout << "\nASCENDING (Murah ke Mahal)" << endl;
     } else {
-        cout << "Urut secara Descending" << endl;
+        cout << "\nUrut secara Descending" << endl;
     }
+    
 }
 void updateStok(){
     int id_baru;
@@ -434,20 +453,31 @@ void updateStok(){
 
 void menuSort() {
     int pilihanSort;
-    cout << "\n === Urut Berdasarkan Harga ===" << endl;
+
+    cout << "\n=== Urut Berdasarkan Harga ===" << endl;
     cout << "1. Ascending" << endl;
     cout << "2. Descending" << endl;
-    cout << "Pilih (1/2): ";
+    cout << "Pilih urutan (1/2): ";
     cin >> pilihanSort;
 
-    if (pilihanSort == 1) {
-        sortBarang(true);
-        tampilBarang();
-    } else if (pilihanSort == 2) {
-        sortBarang(false);
-        tampilBarang();
-    } else {
-        cout << "\n Pilihan tidak valid" << endl;
+    switch (pilihanSort) {
+
+        case 1:
+            sortBarang(true);
+
+            cout << "\n===================== DATA BARANG ASCENDING =======================\n";
+            tampilBarang();
+            break;
+
+        case 2:
+            sortBarang(false);
+
+            cout << "\n===================== DATA BARANG DESCENDING =======================\n";
+            tampilBarang();
+            break;
+
+        default:
+            cout << "Pilihan tidak valid!" << endl;
     }
 }
 
@@ -470,21 +500,27 @@ void hapusBarang(){
         bantu = bantu->next;
     }
 
-    if (!bantu){
-        cout << "Data tidak ditemukan!\n";
-        return;
-    }
+    if (bantu == NULL){
+
+    cout << "\nMaaf, data tidak ditemukan. Coba input ulang ";
+
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
+
+    return;
+}
 
     if (prev == NULL){
         head = bantu->next;
-        cout << "Hapus barang di depan\n";
+        cout << "Barang berhasil dihapus dengan hapus barang di depan\n";
     } else {
         prev->next = bantu->next;
 
         if (bantu->next == NULL) {
-        cout << "Hapus barang dibelakang\n";
+        cout << "Barang berhasil dihapus dengan hapus barang dibelakang\n";
         }else {
-        cout << "Hapus barang di tengah\n";
+        cout << "Barang berhasil dihapus dengan hapus barang di tengah\n";
         }
     }
 
