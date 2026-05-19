@@ -160,9 +160,10 @@ void tambahBarang(){
 cout << setfill(' ');
 }
 void tampilBarang() {
-    cout << "+-----------------------------------------------------------------+" << endl;
-    cout << "|                         TAMPIL BARANG                           |" << endl;
-    cout << "+-----------------------------------------------------------------+" << endl;
+	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << "|" << setfill(' ')<<  setw(42) << right << "TAMPIL BARANG"<< setw(24) << "|" << endl;
+	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << setfill(' ');  
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko" << endl;
@@ -437,6 +438,7 @@ void sortBarang(bool asc){
         cout << "\nUrut secara Descending" << endl;
         cout << "\nurut ASCENDING (Murah ke Mahal)" << endl;
     
+}
 }
 void updateStok(){
     int id_baru;
