@@ -275,7 +275,21 @@ void cariNama() {
 
     cout << setfill('=') << setw(65) << "=" << endl;
     cout << setfill(' ') << setw(40) << "HASIL PENCARIAN" << endl;
-    cout << setfilll('=') << setw(65) << "=" << endl;
+    cout << setfill('=') << setw(65) << "=" << endl;
+
+    cout << left;
+    cout << "|"
+         << setw(10) << "ID"
+         << "|"
+         << setw(25) << "Nama Barang"
+         << "|"
+         << setw(10) << "Stok"
+         << "|"
+         << setw(15) << "Harga"
+         << "|" << endl;
+    cout << setfill('-') << setw(65) << "-" << endl;
+    cout << setfill(' ');
+
 
     while (bantu != NULL) {
 
