@@ -281,8 +281,6 @@ void cariNama() {
         cout << "|" << setfill(' ')<<  setw(42) << right << "HASIL PENCARIAN"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << setfill(' ');   
-
-
     cout << left;
     cout << "|"
          << setw(10) << "ID"
@@ -295,7 +293,6 @@ void cariNama() {
          << "|" << endl;
     cout << setfill('-') << setw(65) << "-" << endl;
     cout << setfill(' ');
-
 
     while (bantu != NULL) {
 
@@ -485,13 +482,12 @@ void menuSort() {
     int pilihanSort;
 
     cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
-	cout << "|" << setfill(' ') << setw(26) << "             URUT BERDASARKAN HARGA            " << setw(21) << "     |" << endl;
+	cout << "|" << setfill(' ') << setw(26) << "       URUT BERDASARKAN HARGA         " << setw(27) << "    |" << endl;
     cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
 	cout << setfill(' ');
-
-	cout << "|" << setfill(' ') << setw(55) << " 1. Ascending (Murah ke Mahal)" << setw(16) << "     |" << endl;
-    cout << "|" << setfill(' ') << setw(55) << " 2. Descending (Mahal ke Murah)" << setw(16) << "     |" << endl;
-    cout << "+" << setfill('-') << setw(58) << "+" << endl;
+	cout << "|" << left << setfill(' ')<< setw(42) << " 1. Ascending  (Murah ke Mahal)"<< "|" << endl;    
+	cout << "|" << left << setfill(' ')<< setw(42) << " 2. Descending  (Mahal ke Murah)"<< "|" << endl;    
+    cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
     cout << setfill(' ');
     cout << "Pilih urutan (1/2): ";
     cin >> pilihanSort;
@@ -501,7 +497,7 @@ void menuSort() {
 case 1:
     sortBarang(true);
     cout << "\n";
-    cout << setfill('=') << setw(70) << "=" << endl;
+    cout << setfill('='	) << setw(70) << "=" << endl;
 
     cout << setfill(' ') << setw(47)
          << "DATA BARANG ASCENDING"
@@ -513,12 +509,11 @@ case 1:
 case 2:
     sortBarang(false);
     cout << "\n";
-    cout << setfill('=') << setw(70) << "=" << endl;
-    cout << setfill(' ') << setw(48)
-         << "DATA BARANG DESCENDING"
-         << endl;
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << "|" << setfill(' ')<<  setw(42) << right << "DATA BARANG DESCENDING"<< setw(24) << "|" << endl;
+	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << setfill(' ');  
 
-    cout << setfill('=') << setw(70) << "=" << endl;
     tampilBarang();
     break;
 default:
