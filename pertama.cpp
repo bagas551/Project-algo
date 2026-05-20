@@ -231,13 +231,7 @@ void cariId() {
 
         if (hasil != NULL) {
             cout << "\nBarang Berhasil Ditemukan!" << endl;
-            cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-            cout << left << setw(10) << "ID"
-                 << setw(20) << "Nama"
-                 << setw(10) << "Stok"
-                 << setw(10) << "Harga" << endl;
-            cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-               
+            tampilHeader();
             cout << setw(10) << hasil->data.id_barang
                  << setw(20) << hasil->data.Nama_barang
                  << setw(10) << hasil->data.stok
@@ -282,18 +276,7 @@ void cariNama() {
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << setfill(' ');   
     cout << left;
-    cout << "|"
-         << setw(10) << "ID"
-         << "|"
-         << setw(25) << "Nama Barang"
-         << "|"
-         << setw(10) << "Stok"
-         << "|"
-         << setw(15) << "Harga"
-         << "|" << endl;
-    cout << setfill('-') << setw(65) << "-" << endl;
-    cout << setfill(' ');
-
+   tampilHeader();
     while (bantu != NULL) {
 
         if (strstr(bantu->data.Nama_barang, dicari)) {
