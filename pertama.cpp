@@ -303,10 +303,10 @@ void cariNama() {
     }
 
     if (!ketemu) {
-
         cout << " Barang tidak ditemukan!    \n";
     }
 
+    
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.get();
@@ -349,8 +349,7 @@ void cariStok() {
             cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
 			cout << setfill(' ');
 
-          
-
+    
             ketemu = true;
         }
 
@@ -358,9 +357,15 @@ void cariStok() {
     }
 
     if (!ketemu) {
-        cout << "| Barang dengan stok tersebut tidak ditemukan"
-			 << setw(40) << " "
-			 << "|" << endl;
+        cout << "+===============================================================+\n";
+
+        cout << "|"
+            << setw(53) << right
+            << "Barang dengan stok tersebut tidak ditemukan"
+            << setw(12) << "|"
+            << endl;
+
+        cout << "+===============================================================+\n";
     }
 
 
@@ -457,7 +462,10 @@ void updateStok(){
 
 void menuSort() {
     int pilihanSort;
+    char ulang;
 
+    do{
+        system("cls");
     cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
 	cout << "|" << setfill(' ') << setw(26) << "       URUT BERDASARKAN HARGA         " << setw(27) << "    |" << endl;
     cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
@@ -490,10 +498,20 @@ case 2:
 
     tampilBarang();
     break;
-default:
+    default:
     cout << "Pilihan tidak valid!" << endl;
 }
+    cout << "\nMau urut barang lagi? (y/t): ";
+        cin >> ulang;
+
+    } while (ulang == 'y' || ulang == 'Y');
+
+    cout << "\nTekan enter untuk kembali ke menu...";
+    cin.ignore();
+    cin.get();
     }
+
+
 void hapusBarang(){
    int id_hapus;
    cout << "Masukkan ID yang ingin dihapus : ";
