@@ -221,7 +221,7 @@ void cariId() {
 
     do {
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << "|" << setfill(' ')<<  setw(42) << right << "FITUR CARI BARANG"<< setw(24) << "|" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN ID"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << setfill(' ');          
         cout << "Masukkan ID Barang yang mau dicari : ";
@@ -265,9 +265,9 @@ void cariNama() {
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BERDASARKAN NAMA"<< setw(24) << "|" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN NAMA"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << setfill(' ');   
+        cout << setfill(' ');    
 
     cout << "\nMasukkan nama barang : ";
     cin.ignore();
@@ -339,10 +339,10 @@ void cariStok() {
 
     int cari_stok;
 
-    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BERDASARKAN STOK"<< setw(24) << "|" << endl;
+   cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN STOK"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << setfill(' ');   
+        cout << setfill(' ');    
 
     cout << left;
     cout << "\nMasukkan jumlah stok : ";
@@ -395,15 +395,15 @@ void cariStok() {
 void menuCari() {
     int pilihan;
        cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
-		cout << "|" << setfill(' ') << setw(26) << "             CARI BARANG            " << setw(16) << "     |" << endl;
+		cout << "|" << setfill(' ') << setw(26) << "             CARI BARANG             " << setw(16) << "     |" << endl;
 		cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
 		cout << setfill(' ');
-		cout << "|" << setfill(' ') << setw(26) << "     Berdasarkan ID Barang         " << setw(16) << "      |" << endl;
-		cout << "|" << setfill(' ') << setw(26) << "     Berdasarkan Nama Barang         " << setw(16) << "     |" << endl;
-		cout << "|" << setfill(' ') << setw(26) << "     Berdasarkan Stok Barang         " << setw(16) << "     |" << endl;
+		cout << "|" << setfill(' ') << setw(26) << "  1. Berdasarkan ID Barang          " << setw(16) << "      |" << endl;
+		cout << "|" << setfill(' ') << setw(26) << "  2. Berdasarkan Nama Barang         " << setw(16) << "     |" << endl;
+		cout << "|" << setfill(' ') << setw(26) << "  3. Berdasarkan Stok Barang         " << setw(16) << "     |" << endl;
 		cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
 		cout << setfill(' ');
-        cout << "Pilih:";
+        cout << "Pilih: ";
         cin >> pilihan;
         switch(pilihan) {
             case 1: cariId();
