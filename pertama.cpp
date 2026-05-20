@@ -5,17 +5,20 @@
 #include <cstring>
 using namespace std;
 
+//Struct untuk menyimpan data barang
 struct Barang {
     int id_barang;
     char Nama_barang[100];
     int stok;
     int harga;
 };  
+// Struct node linked list
 struct DataBarang{
-    Barang data;
-    DataBarang* next;
+    Barang data;        // Data barang
+    DataBarang* next;   // Pointer ke node berikutnya
 };
 
+// Pointer head sebagai awal linked list
 DataBarang* head = NULL;
 
 //TAMPILAN 
@@ -65,9 +68,11 @@ void bacaData() {
         delete hapus;
     }
 
+    // Membaca isi file
     while (!feof(data)) {
         DataBarang* baru = new DataBarang;
 
+        // Membaca data dari file
         if (fscanf(data, "%d;%[^;];%d;%d\n",
         &baru->data.id_barang,
         baru->data.Nama_barang, &baru->data.stok, &baru->data.harga) != 4) {
@@ -75,6 +80,7 @@ void bacaData() {
             break;
         }
 
+        // Menambahkan node ke linked list
         baru->next = head;
         head = baru;
     }
@@ -82,12 +88,14 @@ void bacaData() {
     fclose(data);
 }
 
+// Simpan data ke file
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
         if(data == NULL) {
             cout << "Gagal menyimpan file. Coba lagi" << endl;
             return;
                 }
+    // Pointer bantu
     DataBarang* bantu = head;
     while(bantu) {
         fprintf(data, "%d;%s;%d;%d\n",
@@ -101,7 +109,7 @@ void simpanData(){
     fclose(data);
     }
 
-// 1. MENU TAMBAH BARANG
+// Menu Tambah Barang
 void tambahBarang(){
     cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
 	cout << "|" << setfill(' ') << setw(26) << "             TAMBAH BARANG           " << setw(16) << "     |" << endl;
@@ -119,6 +127,7 @@ void tambahBarang(){
     }
 
     for(int i =0; i < jumlah; i++){
+    // Membuat node baru
     DataBarang* tambah = new DataBarang;
     
     cout << "\nData Barang ke-" << i+1 << endl;
@@ -157,6 +166,7 @@ void tambahBarang(){
         continue;;
     }
     cout << endl;
+    // Menambahkan node didepan linked list
     tambah->next = head;
     head = tambah;
     }
@@ -168,11 +178,14 @@ void tambahBarang(){
     cout << left;
 cout << setfill(' ');
 }
+
+// Menu Tampil Barang
 void tampilBarang() {
 	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
 	cout << "|" << setfill(' ')<<  setw(42) << right << "TAMPIL BARANG"<< setw(24) << "|" << endl;
 	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
 	cout << setfill(' ');  
+    // Pointer bantu
     DataBarang* bantu = head;
     if(head == NULL) {
         cout << "Belum ada Barang di Toko" << endl;
@@ -187,6 +200,7 @@ void tampilBarang() {
    
     cout << setfill(' ');
 
+    // Menampilkan semua data barang
     while(bantu) {
         cout << "|";
         cout << right << setfill('0') << setw(5) << bantu->data.id_barang << left << setfill(' ') 
@@ -202,9 +216,9 @@ void tampilBarang() {
     
 }
 
-// search (sequential search)
-
+// Search (Sequential Search)
 DataBarang* cariBarang(int id){
+    // Pointer bantu
     DataBarang* bantu = head;
     while (bantu) {
         if(bantu->data.id_barang == id)
@@ -215,7 +229,7 @@ DataBarang* cariBarang(int id){
     return NULL;
 }
 
-// Sequential search
+// Menu cari berdasarkan ID
 void cariId() {
     int cari;
     char id_cari;
@@ -238,6 +252,7 @@ void cariId() {
         cout << "Masukkan ID Barang yang mau dicari : ";
         cin >> cari;
 
+        // Memanggil fungsi sequential search
         DataBarang* hasil = cariBarang(cari);
 
         if (hasil != NULL) {
@@ -263,10 +278,10 @@ void cariId() {
 }
 
 void cariNama() {
-
+    // Variabel untuk input nama barang
     char dicari[100];
     bool ketemu = false;
-
+    // Validasi linked list kosong
     if (head == NULL) {
         cout << "Belum ada data barang!\n";
         return;
@@ -279,13 +294,13 @@ void cariNama() {
         cout << "Masukkan nama barang yang mau dicari : ";
         cin.ignore();
     cin.getline(dicari, 100);
- 
+    // Pointer bantu
     DataBarang* bantu = head;
 		 cout << "\n";
       tampilHeader();
-
+    // Sequential search berdasarkan nama
     while (bantu != NULL) {
-
+        // Mengecek apakah nama ditemukan
         if (strstr(bantu->data.Nama_barang, dicari)) {
 			cout << "|" ;
 			cout << right << setfill('0') << setw(5) << bantu->data.id_barang 
@@ -296,7 +311,7 @@ void cariNama() {
 			
             ketemu = true;
         }
-
+        // Pindah ke node berikutnya
         bantu = bantu->next;
     }
 
@@ -310,8 +325,9 @@ void cariNama() {
     cin.get();
 }
 
+// Menu Cari Berdasarkan Stok
 void cariStok() {
-
+    // Validasi linked list kosong
     if (head == NULL) {
 
         cout << "\nBelum ada data barang di rak!" << endl;
@@ -320,7 +336,7 @@ void cariStok() {
         cin.get();
         return;
     }
-
+    // Variabel input stok
     int cari_stok;
 
    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
@@ -331,10 +347,10 @@ void cariStok() {
          cin >> cari_stok;
 
         cout << endl;
-
+    // Pointer bantu
     DataBarang* bantu = head;
     bool ketemu = false;
-	
+	// Sequential search berdasarkan stok
     while (bantu != NULL) {
  
         if (bantu->data.stok == cari_stok) {
@@ -350,10 +366,10 @@ void cariStok() {
     
             ketemu = true;
         }
-
+        // Pindah ke node berikutnya
         bantu = bantu->next;
     }
-
+    // Jika data tidak ditemukan
     if (!ketemu) {
         cout << "+===============================================================+\n";
 
@@ -371,6 +387,7 @@ void cariStok() {
     cin.get();
 }
 
+// Menu Untuk Searching
 void menuCari() {
     int pilihan;
        cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
@@ -396,7 +413,7 @@ void menuCari() {
         }
 }
 
-// Bubble sort
+// Menu Sorting Barang Menggunakan Bubble sort
 void sortBarang(bool asc){
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
@@ -405,13 +422,17 @@ void sortBarang(bool asc){
 
     bool tukar;
 
+    // Proses bubble sort
     do{
         tukar = false;
         DataBarang* bantu = head;
 
         while (bantu->next) {
-
-            if ((asc && bantu->data.harga > bantu->next->data.harga) || (!asc && bantu->data.harga < bantu->next->data.harga)) {
+            
+            // Sorting ascending
+            if ((asc && bantu->data.harga > bantu->next->data.harga) || 
+                // Sorting descending
+                (!asc && bantu->data.harga < bantu->next->data.harga)) {
 
                 Barang swap = bantu->data;
                 bantu->data = bantu->next->data;
@@ -430,6 +451,7 @@ void sortBarang(bool asc){
         cout << "\nUrut secara Descending" << endl;
 }
 }
+// Menu Update Stok
 void updateStok(){
 	 cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
 		cout << "|" << setfill(' ') << setw(26) << "          UPDATE STOK BARANG         " << setw(16) << "     |" << endl;
@@ -444,19 +466,20 @@ void updateStok(){
     DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru : ";
-        cin>> stok_baru;
+        cin >> stok_baru;
         cout << endl;
         if(stok_baru < 0) {
             cout << "Stok tidak boleh bernilai negatif" << endl;
             return;
         }
 
+        // Update stok
         ada->data.stok = stok_baru;
         simpanData();
         cout << endl;
-    cout << "Stok berhasil diupdate" << endl;
-    tampilHeader();
-    cout << "|" ;
+        cout << "Stok berhasil diupdate" << endl;
+        tampilHeader();
+        cout << "|" ;
 			cout << right << setfill('0') << setw(5) << ada->data.id_barang 
 			<< left << setfill(' ')<< setw(6) << "" << "|"
 			<< setw(22) << ada->data.Nama_barang << "|"
@@ -472,6 +495,7 @@ void updateStok(){
 
 }
 
+// Menu untuk Sorting
 void menuSort() {
     int pilihanSort;
     char ulang;
@@ -519,7 +543,7 @@ case 2:
     } while (ulang == 'y' || ulang == 'Y');
     }
 
-
+// Menu Hapus Barang
 void hapusBarang(){
     char ulang;
     do {
@@ -530,6 +554,7 @@ void hapusBarang(){
                 cout << "Belum ada data barang" << endl;
                 return;
         }
+            // Pointer bantu dan prev
             DataBarang *bantu = head;
             DataBarang *prev = NULL;
             while (bantu && bantu->data.id_barang != id_hapus){
@@ -541,11 +566,12 @@ void hapusBarang(){
                 cout << "\nMaaf, data tidak ditemukan. Input ulang! ";
                 return;
             } else {
-
+                // Hapus node depan
                 if (prev == NULL){
                     head = bantu->next;
                     cout << "Barang berhasil dihapus dengan hapus barang di depan\n";
                 } else {
+                    // Hapus node tengah/belakang
                     prev->next = bantu->next;
 
                     if (bantu->next == NULL) {
@@ -561,7 +587,9 @@ void hapusBarang(){
                 cin >> ulang;
     }           while (ulang == 'y' || ulang == 'Y');
 }
+// Menu Utama
 int main() {
+    // Membaca data dari file
     bacaData();
     int pilihan;
     do {
