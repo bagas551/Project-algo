@@ -232,10 +232,11 @@ void cariId() {
         if (hasil != NULL) {
             cout << "\nBarang Berhasil Ditemukan!" << endl;
             tampilHeader();
-            cout << setw(10) << hasil->data.id_barang
-                 << setw(20) << hasil->data.Nama_barang
-                 << setw(10) << hasil->data.stok
-                 << setw(10) << hasil->data.harga << endl;
+            cout << "|";
+            cout << right << setfill('0') << setw(5) << hasil->data.id_barang
+            << left << setfill(' ') << setw(6) << "" << "|" << setw(22) << hasil->data.Nama_barang
+            <<"|" << setw(10) << hasil->data.stok
+            << " | Rp" << setw(13) << hasil->data.harga << "|" << endl;
         } else {
             cout << "Maaf barang tidak ditemukan" << endl;
         }
