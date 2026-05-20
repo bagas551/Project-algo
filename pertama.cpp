@@ -521,49 +521,45 @@ case 2:
 
 
 void hapusBarang(){
-   int id_hapus;
-   cout << "Masukkan ID yang ingin dihapus : ";
-   cin >> id_hapus;
-   if (head == NULL) {
-        cout << "Belum ada data barang" << endl;
-        return;
-    }
-    DataBarang *bantu = head;
-    DataBarang *prev = NULL;
-    while (bantu && bantu->data.id_barang != id_hapus){
-        prev = bantu;
-        bantu = bantu->next;
-    }
-
-    if (bantu == NULL){
-
-    cout << "\nMaaf, data tidak ditemukan. Input ulang! ";
-
-    cout << "\nTekan enter untuk kembali ke menu...";
-    cin.ignore();
-    cin.get();
-
-    return;
-}
-
-    if (prev == NULL){
-        head = bantu->next;
-        cout << "Barang berhasil dihapus dengan hapus barang di depan\n";
-    } else {
-        prev->next = bantu->next;
-
-        if (bantu->next == NULL) {
-        cout << "Barang berhasil dihapus dengan hapus barang dibelakang\n";
-        }else {
-        cout << "Barang berhasil dihapus dengan hapus barang di tengah\n";
+    char ulang;
+    do {
+        int id_hapus;
+        cout << "Masukkan ID yang ingin dihapus : ";
+        cin >> id_hapus;
+        if (head == NULL) {
+                cout << "Belum ada data barang" << endl;
+                return;
         }
-    }
+            DataBarang *bantu = head;
+            DataBarang *prev = NULL;
+            while (bantu && bantu->data.id_barang != id_hapus){
+                prev = bantu;
+                bantu = bantu->next;
+            }
 
-    delete bantu;
-    simpanData();
-    cout << "\nTekan enter untuk kembali ke menu...";
-    cin.ignore();
-    cin.get();
+            if (bantu == NULL){
+                cout << "\nMaaf, data tidak ditemukan. Input ulang! ";
+                return;
+            } else {
+
+                if (prev == NULL){
+                    head = bantu->next;
+                    cout << "Barang berhasil dihapus dengan hapus barang di depan\n";
+                } else {
+                    prev->next = bantu->next;
+
+                    if (bantu->next == NULL) {
+                        cout << "Barang berhasil dihapus dengan hapus barang dibelakang\n";
+                    } else {
+                      cout << "Barang berhasil dihapus dengan hapus barang ditengah\n";
+                    }
+                }
+                delete bantu;
+                simpanData();
+            }
+                cout << "\nMau hapus barang lagi? (y/t): ";
+                cin >> ulang;
+    }           while (ulang == 'y' || ulang == 'Y');
 }
 int main() {
     bacaData();
