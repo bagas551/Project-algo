@@ -216,6 +216,8 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+
+// Sequential search
 void cariId() {
     int cari;
     char id_cari;
@@ -411,7 +413,7 @@ void menuCari() {
         }
 }
 
-
+// Bubble sort
 void sortBarang(bool asc){
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
