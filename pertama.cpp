@@ -325,18 +325,24 @@ void cariStok() {
     int cari_stok;
 
     cout << setfill('=') << setw(65) << "=" << endl;
-    cout << setfill('') << setw(40) << "CARI BERDASARKAN STOK" << endl;
+    cout << setfill(' ') << setw(40) << "CARI BERDASARKAN STOK" << endl;
+    cout << setfill('=') << setw(65) << "=" << endl;
 
+    cout << left;
     cout << "\nMasukkan jumlah stok : ";
     cin >> cari_stok;
 
     DataBarang* bantu = head;
     bool ketemu = false;
 
-    cout << "\n";
-    cout << "+=======================================================+\n";
-    cout << "| ID      | Nama Barang      | Stok    | Harga         |\n";
-    cout << "+=======================================================+\n";
+    cout << "|" << setw(10) << "ID" 
+         << "|" << setw(25) << "Nama Barang"
+         << "|" << setw(10) << "Stock"
+         << "|" << setw(15) << "Harga"
+         << "|" << endl;
+
+    cout << setfill('-') << setw(65) << "-" << endl;
+    cout << setfill(' ');
 
     while (bantu != NULL) {
 
