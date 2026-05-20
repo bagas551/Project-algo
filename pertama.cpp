@@ -363,7 +363,6 @@ void cariStok() {
 			 << "|" << endl;
     }
 
-
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.ignore();
     cin.get();
@@ -429,16 +428,21 @@ void sortBarang(bool asc){
 }
 }
 void updateStok(){
+	 cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
+		cout << "|" << setfill(' ') << setw(26) << "          UPDATE STOK BARANG         " << setw(16) << "     |" << endl;
+		cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
+		cout << setfill(' ');
     int id_baru;
     int stok_baru;
     cout << "Masukkan ID Barang: ";
     cin >> id_baru;
+    cout << endl;
 
     DataBarang* ada = cariBarang(id_baru);
     if(ada) {
         cout << "Masukkan stok baru : ";
         cin>> stok_baru;
-        
+        cout << endl;
         if(stok_baru < 0) {
             cout << "Stok tidak boleh bernilai negatif" << endl;
             return;
@@ -446,7 +450,17 @@ void updateStok(){
 
         ada->data.stok = stok_baru;
         simpanData();
+        cout << endl;
     cout << "Stok berhasil diupdate" << endl;
+    tampilHeader();
+    cout << "|" ;
+			cout << right << setfill('0') << setw(5) << ada->data.id_barang 
+			<< left << setfill(' ')<< setw(6) << "" << "|"
+			<< setw(22) << ada->data.Nama_barang << "|"
+			<< setw(11) << ada->data.stok << " | Rp" 
+			<< setw(14) << ada->data.harga << "|" << endl;
+			 cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
+    cout << setfill(' ');
     } else
     cout << "Barang tidak ditemukan" << endl;
     cout << "\nTekan enter untuk kembali ke menu utama...";
