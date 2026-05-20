@@ -61,7 +61,7 @@ void bacaData() {
     if (data == NULL){
         return;
     }
-
+    // Menghapus linked list lama agar data tidak double
     while (head != NULL){
         DataBarang* hapus = head;
         head = head->next;
@@ -94,7 +94,7 @@ void simpanData(){
         if(data == NULL) {
             cout << "Gagal menyimpan file. Coba lagi" << endl;
             return;
-                }
+        }
     // Pointer bantu
     DataBarang* bantu = head;
     while(bantu) {
