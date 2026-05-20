@@ -296,13 +296,13 @@ void cariNama() {
         if (strstr(bantu->data.Nama_barang, dicari)) {
 
             cout << "| "
-                 << left << setw(9) << bantu->data.id_barang
+                 << left << setw(10) << bantu->data.id_barang
                  << "| "
-                 << setw(20) << bantu->data.Nama_barang
+                 << setw(25) << bantu->data.Nama_barang
                  << "| "
-                 << setw(12) << bantu->data.stok
+                 << setw(10) << bantu->data.stok
                  << "| Rp "
-                 << right << setw(10) << bantu->data.harga
+                 << right << setw(15) << bantu->data.harga
                  << " |\n";
 
             ketemu = true;
@@ -417,7 +417,6 @@ void menuCari() {
             case 3: cariStok();
             break;
             default:
-            cout << "Pilihan tidak valid. Coba lagi" << endl;
             cout << "Pilihan tidak valid. Coba lagi!" << endl;
         }
 }
@@ -454,8 +453,6 @@ void sortBarang(bool asc){
         cout << "\nASCENDING (Murah ke Mahal)" << endl;
     } else {
         cout << "\nUrut secara Descending" << endl;
-        cout << "\nurut ASCENDING (Murah ke Mahal)" << endl;
-    
 }
 }
 void updateStok(){
@@ -489,8 +486,8 @@ void menuSort() {
     int pilihanSort;
 
     cout << "\n=== Urut Berdasarkan Harga ===" << endl;
-    cout << "1. Ascending" << endl;
-    cout << "2. Descending" << endl;
+    cout << "1. Ascending (Murah ke Mahal)" << endl;
+    cout << "2. Descending (Mahal ke Murah)" << endl;
     cout << "Pilih urutan (1/2): ";
 
     cin >> pilihanSort;
@@ -537,7 +534,6 @@ void hapusBarang(){
 
     if (bantu == NULL){
 
-    cout << "\nMaaf, data tidak ditemukan. Coba input ulang ";
     cout << "\nMaaf, data tidak ditemukan. Coba input ulang! ";
 
     cout << "\nTekan enter untuk kembali ke menu...";
