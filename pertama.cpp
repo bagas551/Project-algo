@@ -283,19 +283,18 @@ void cariNama() {
     cin.getline(dicari, 100);
  
     DataBarang* bantu = head;
-
-   
-    while (bantu != NULL) {
 		 cout << "\n";
-   tampilHeader();
+      tampilHeader();
+
+    while (bantu != NULL) {
 
         if (strstr(bantu->data.Nama_barang, dicari)) {
 			cout << "|" ;
 			cout << right << setfill('0') << setw(5) << bantu->data.id_barang 
 			<< left << setfill(' ')<< setw(6) << "" << "|"
 			<< setw(22) << bantu->data.Nama_barang << "|"
-			<< setw(10) << bantu->data.stok << " | Rp" 
-			<< setw(13) << bantu->data.harga << "|" << endl;
+			<< setw(11) << bantu->data.stok << " | Rp" 
+			<< setw(14) << bantu->data.harga << "|" << endl;
 			
             ketemu = true;
         }
@@ -331,24 +330,15 @@ void cariStok() {
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << setfill(' ');          
         cout << "Masukkan stok barang yang mau dicari : "; 
-    cout << left;
-    cin >> cari_stok;
+         cin >> cari_stok;
+
+        cout << endl;
 
     DataBarang* bantu = head;
     bool ketemu = false;
-
-    cout << "|" << setw(12) << "ID" 
-         << "|" << setw(22) << "Nama Barang"
-         << "|" << setw(12) << "Stock"
-         << "|" << setw(15) << "Harga"
-         << "|" << endl;
-
-    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-    cout << setfill(' ');
-
-
+	
     while (bantu != NULL) {
-
+ 
         if (bantu->data.stok == cari_stok) {
 		tampilHeader();
             cout << "|";
@@ -359,15 +349,7 @@ void cariStok() {
             cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
 			cout << setfill(' ');
 
-            cout << "| "
-                 << left << setw(12) << bantu->data.id_barang
-                 << "| "
-                 << setw(22) << bantu->data.Nama_barang
-                 << "| "
-                 << setw(12) << bantu->data.stok
-                 << "| Rp "
-                 << setw(12) << bantu->data.harga
-                 << "|\n";
+          
 
             ketemu = true;
         }
@@ -381,7 +363,6 @@ void cariStok() {
 			 << "|" << endl;
     }
 
-        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
 
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.ignore();
