@@ -497,13 +497,10 @@ void menuSort() {
 case 1:
     sortBarang(true);
     cout << "\n";
-    cout << setfill('='	) << setw(70) << "=" << endl;
-
-    cout << setfill(' ') << setw(47)
-         << "DATA BARANG ASCENDING"
-         << endl;
-
-    cout << setfill('=') << setw(70) << "=" << endl;
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << "|" << setfill(' ')<<  setw(42) << right << "DATA BARANG ASCENDING"<< setw(24) << "|" << endl;
+	cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+	cout << setfill(' ');  
     tampilBarang();
     break;
 case 2:
