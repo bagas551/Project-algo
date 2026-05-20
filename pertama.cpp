@@ -272,11 +272,10 @@ void cariNama() {
     DataBarang* bantu = head;
 
     cout << "\n";
-    cout << "+-----------------------------------------------------------+\n";
-    cout << "|                    HASIL PENCARIAN                        |\n";
-    cout << "+----------+--------------------+-----------+---------------+\n";
-    cout << "| ID       | Nama Barang        | Stok       | Harga         |\n";
-    cout << "+----------+--------------------+-----------+---------------+\n";
+
+    cout << setfill('=') << setw(65) << "=" << endl;
+    cout << setfill(' ') << setw(40) << "HASIL PENCARIAN" << endl;
+    cout << setfilll('=') << setw(65) << "=" << endl;
 
     while (bantu != NULL) {
 
