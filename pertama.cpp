@@ -324,9 +324,8 @@ void cariStok() {
 
     int cari_stok;
 
-    cout << "\n====================================";
-    cout << "\n     CARI BERDASARKAN STOK";
-    cout << "\n====================================";
+    cout << setfill('=') << setw(65) << "=" << endl;
+    cout << setfill('') << setw(40) << "CARI BERDASARKAN STOK" << endl;
 
     cout << "\nMasukkan jumlah stok : ";
     cin >> cari_stok;
