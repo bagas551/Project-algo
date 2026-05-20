@@ -220,6 +220,8 @@ void cariId() {
     }
 
     do {
+		system("cls");
+
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN ID"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
@@ -264,36 +266,26 @@ void cariNama() {
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN NAMA"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << setfill(' ');    
-
-    cout << "\nMasukkan nama barang : ";
-    cin.ignore();
+        cout << setfill(' ');          
+        cout << "Masukkan nama barang yang mau dicari : ";
+        cin.ignore();
     cin.getline(dicari, 100);
-
+ 
     DataBarang* bantu = head;
 
-    cout << "\n";
-
-    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << "|" << setfill(' ')<<  setw(42) << right << "HASIL PENCARIAN"<< setw(24) << "|" << endl;
-        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << setfill(' ');   
-    cout << left;
-   tampilHeader();
+   
     while (bantu != NULL) {
+		 cout << "\n";
+   tampilHeader();
 
         if (strstr(bantu->data.Nama_barang, dicari)) {
-
-            cout << "| "
-                 << left << setw(10) << bantu->data.id_barang
-                 << "| "
-                 << setw(25) << bantu->data.Nama_barang
-                 << "| "
-                 << setw(10) << bantu->data.stok
-                 << "| Rp "
-                 << right << setw(15) << bantu->data.harga
-                 << " |\n";
-
+			cout << "|" ;
+			cout << right << setfill('0') << setw(5) << bantu->data.id_barang 
+			<< left << setfill(' ')<< setw(6) << "" << "|"
+			<< setw(22) << bantu->data.Nama_barang << "|"
+			<< setw(10) << bantu->data.stok << " | Rp" 
+			<< setw(13) << bantu->data.harga << "|" << endl;
+			
             ketemu = true;
         }
 
@@ -302,7 +294,7 @@ void cariNama() {
 
     if (!ketemu) {
 
-        cout << "|                Barang tidak ditemukan!                   |\n";
+        cout << " Barang tidak ditemukan!    \n";
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
@@ -328,37 +320,26 @@ void cariStok() {
    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
         cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BARANG BERDASARKAN STOK"<< setw(24) << "|" << endl;
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-        cout << setfill(' ');    
-
+        cout << setfill(' ');          
+        cout << "Masukkan stok barang yang mau dicari : "; 
     cout << left;
-    cout << "\nMasukkan jumlah stok : ";
     cin >> cari_stok;
 
     DataBarang* bantu = head;
     bool ketemu = false;
 
-    cout << "|" << setw(10) << "ID" 
-         << "|" << setw(25) << "Nama Barang"
-         << "|" << setw(10) << "Stock"
-         << "|" << setw(15) << "Harga"
-         << "|" << endl;
-
-    cout << setfill('-') << setw(65) << "-" << endl;
-    cout << setfill(' ');
 
     while (bantu != NULL) {
 
         if (bantu->data.stok == cari_stok) {
-
-            cout << "| "
-                 << left << setw(8) << bantu->data.id_barang
-                 << "| "
-                 << setw(18) << bantu->data.Nama_barang
-                 << "| "
-                 << setw(8) << bantu->data.stok
-                 << "| Rp "
-                 << setw(10) << bantu->data.harga
-                 << "|\n";
+		tampilHeader();
+            cout << "|";
+            cout << right << setfill('0') << setw(5) << bantu->data.id_barang
+            << left << setfill(' ') << setw(6) << "" << "|" << setw(22) << bantu->data.Nama_barang
+            <<"|" << setw(11) << bantu->data.stok
+            << " | Rp" << setw(14) << bantu->data.harga << "|" << endl;
+            cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
+			cout << setfill(' ');
 
             ketemu = true;
         }
