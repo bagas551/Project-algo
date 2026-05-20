@@ -220,7 +220,10 @@ void cariId() {
     }
 
     do {
-        cout << "\n--- FITUR CARI BARANG ---" << endl;
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "FITUR CARI BARANG"<< setw(24) << "|" << endl;
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << setfill(' ');          
         cout << "Masukkan ID Barang yang mau dicari : ";
         cin >> cari;
 
@@ -228,12 +231,12 @@ void cariId() {
 
         if (hasil != NULL) {
             cout << "\nBarang Berhasil Ditemukan!" << endl;
-            cout << "===============================================\n";
+            cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
             cout << left << setw(10) << "ID"
                  << setw(20) << "Nama"
                  << setw(10) << "Stok"
                  << setw(10) << "Harga" << endl;
-            cout << "================================================\n";
+            cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
                
             cout << setw(10) << hasil->data.id_barang
                  << setw(20) << hasil->data.Nama_barang
@@ -261,9 +264,10 @@ void cariNama() {
         return;
     }
 
-    cout << "\n====================================";
-    cout << "\n       CARI BERDASARKAN NAMA";
-    cout << "\n====================================";
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BERDASARKAN NAMA"<< setw(24) << "|" << endl;
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << setfill(' ');   
 
     cout << "\nMasukkan nama barang : ";
     cin.ignore();
@@ -273,9 +277,11 @@ void cariNama() {
 
     cout << "\n";
 
-    cout << setfill('=') << setw(65) << "=" << endl;
-    cout << setfill(' ') << setw(40) << "HASIL PENCARIAN" << endl;
-    cout << setfill('=') << setw(65) << "=" << endl;
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "HASIL PENCARIAN"<< setw(24) << "|" << endl;
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << setfill(' ');   
+
 
     cout << left;
     cout << "|"
@@ -316,7 +322,7 @@ void cariNama() {
         cout << "|                Barang tidak ditemukan!                   |\n";
     }
 
-    cout << "+-----------------------------------------------------------+\n";
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
 
     cout << "\nTekan enter untuk kembali...";
     cout << "\nTekan enter untuk kembali ke menu utama...";
@@ -336,9 +342,10 @@ void cariStok() {
 
     int cari_stok;
 
-    cout << setfill('=') << setw(65) << "=" << endl;
-    cout << setfill(' ') << setw(40) << "CARI BERDASARKAN STOK" << endl;
-    cout << setfill('=') << setw(65) << "=" << endl;
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << "|" << setfill(' ')<<  setw(42) << right << "CARI BERDASARKAN STOK"<< setw(24) << "|" << endl;
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+        cout << setfill(' ');   
 
     cout << left;
     cout << "\nMasukkan jumlah stok : ";
@@ -381,7 +388,7 @@ void cariStok() {
         cout << "| Barang dengan stok tersebut tidak ditemukan!          |\n";
     }
 
-    cout << "+=======================================================+\n";
+        cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
 
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.ignore();
@@ -399,13 +406,7 @@ void menuCari() {
 		cout << "|" << setfill(' ') << setw(26) << "     Berdasarkan Stok Barang         " << setw(16) << "     |" << endl;
 		cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
 		cout << setfill(' ');
-
         cout << "Pilih:";
-        cout << "\n--- FITUR CARI BARANG ---" << endl;
-        cout << "1. Berdasarkan ID Barang" << endl;
-        cout << "2. Berdasarkan Nama Barang" << endl;
-        cout << "3. Berdasarkan Stok Barang" << endl;
-        cout << "Pilih fitur : ";
         cin >> pilihan;
         switch(pilihan) {
             case 1: cariId();
