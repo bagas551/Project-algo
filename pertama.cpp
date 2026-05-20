@@ -284,10 +284,10 @@ void cariNama() {
  
     DataBarang* bantu = head;
 
+    cout << "\n";
+    tampilHeader();
    
     while (bantu != NULL) {
-		 cout << "\n";
-   tampilHeader();
 
         if (strstr(bantu->data.Nama_barang, dicari)) {
 			cout << "|" ;
@@ -350,7 +350,7 @@ void cariStok() {
     while (bantu != NULL) {
 
         if (bantu->data.stok == cari_stok) {
-		tampilHeader();
+		
             cout << "|";
             cout << right << setfill('0') << setw(5) << bantu->data.id_barang
             << left << setfill(' ') << setw(6) << "" << "|" << setw(22) << bantu->data.Nama_barang
@@ -358,16 +358,6 @@ void cariStok() {
             << " | Rp" << setw(14) << bantu->data.harga << "|" << endl;
             cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
 			cout << setfill(' ');
-
-            cout << "| "
-                 << left << setw(12) << bantu->data.id_barang
-                 << "| "
-                 << setw(22) << bantu->data.Nama_barang
-                 << "| "
-                 << setw(12) << bantu->data.stok
-                 << "| Rp "
-                 << setw(12) << bantu->data.harga
-                 << "|\n";
 
             ketemu = true;
         }
