@@ -328,7 +328,6 @@ void cariStok() {
     if (head == NULL) {
 
         cout << "\nBelum ada data barang di rak!" << endl;
-        cout << "\nTekan enter untuk kembali...";
         cout << "\nTekan enter untuk kembali ke menu utama...";
         cin.ignore();
         cin.get();
@@ -384,8 +383,7 @@ void cariStok() {
 
     cout << "+=======================================================+\n";
 
-    cout << "\nTekan enter untuk kembali...";
-    cout << "\nTekan enter untuk kembali ke menu...";
+    cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.ignore();
     cin.get();
 }
@@ -476,7 +474,7 @@ void updateStok(){
     cout << "Stok berhasil diupdate" << endl;
     } else
     cout << "Barang tidak ditemukan" << endl;
-    cout << "\nTekan enter untuk kembali ke menu...";
+    cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.ignore();
     cin.get();
 
@@ -494,39 +492,43 @@ void menuSort() {
 
     switch (pilihanSort) {
 
-        case 1:
-            sortBarang(true);
+case 1:
+    sortBarang(true);
+    cout << "\n";
+    cout << setfill('=') << setw(70) << "=" << endl;
 
-            cout << "\n===================== DATA BARANG ASCENDING =======================\n";
-            tampilBarang();
-            break;
+    cout << setfill(' ') << setw(47)
+         << "DATA BARANG ASCENDING"
+         << endl;
 
-        case 2:
-            sortBarang(false);
+    cout << setfill('=') << setw(70) << "=" << endl;
+    tampilBarang();
+    break;
+case 2:
+    sortBarang(false);
+    cout << "\n";
+    cout << setfill('=') << setw(70) << "=" << endl;
+    cout << setfill(' ') << setw(48)
+         << "DATA BARANG DESCENDING"
+         << endl;
 
-            cout << "\n===================== DATA BARANG DESCENDING =======================\n";
-            tampilBarang();
-            break;
-
-        default:
-            cout << "Pilihan tidak valid!" << endl;
-    }
+    cout << setfill('=') << setw(70) << "=" << endl;
+    tampilBarang();
+    break;
+default:
+    cout << "Pilihan tidak valid!" << endl;
 }
-
+    }
 void hapusBarang(){
    int id_hapus;
    cout << "Masukkan ID yang ingin dihapus : ";
    cin >> id_hapus;
-   
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
         return;
     }
     DataBarang *bantu = head;
     DataBarang *prev = NULL;
-
-
-
     while (bantu && bantu->data.id_barang != id_hapus){
         prev = bantu;
         bantu = bantu->next;
@@ -534,7 +536,7 @@ void hapusBarang(){
 
     if (bantu == NULL){
 
-    cout << "\nMaaf, data tidak ditemukan. Coba input ulang! ";
+    cout << "\nMaaf, data tidak ditemukan. Input ulang! ";
 
     cout << "\nTekan enter untuk kembali ke menu...";
     cin.ignore();
@@ -562,10 +564,8 @@ void hapusBarang(){
     cin.ignore();
     cin.get();
 }
-
 int main() {
     bacaData();
-
     int pilihan;
     do {
         system("cls");
