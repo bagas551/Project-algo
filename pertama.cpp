@@ -21,7 +21,7 @@ struct DataBarang{
 // Pointer head sebagai awal linked list
 DataBarang* head = NULL;
 
-//TAMPILAN 
+// Tampilan
 void menuHeader(){
 	cout << right;
     cout << "+" << setfill('-') << setw(7) << "+" << setw(36) << "+" << endl;
@@ -55,7 +55,7 @@ void tampilHeader(){
     cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
     cout << setfill(' ');
 }
-// Baca data
+// Baca Data
 void bacaData() {
     FILE *data = fopen("swalayan.txt", "r");
     if (data == NULL){
@@ -88,7 +88,7 @@ void bacaData() {
     fclose(data);
 }
 
-// Simpan data ke file
+// Simpan Data ke File
 void simpanData(){
     FILE *data = fopen("swalayan.txt", "w");
         if(data == NULL) {
@@ -133,7 +133,7 @@ void tambahBarang(){
     cout << "\nData Barang ke-" << i+1 << endl;
 	cout << endl;
     cout << "Id Barang       : ";
-
+    // Validasi ID harus angka
     while (!(cin >> tambah->data.id_barang)){
         
         cout << "Input ID harus angka! " << endl;
@@ -150,6 +150,7 @@ void tambahBarang(){
 
     cout << "Harga Barang    : ";
     cin >> tambah->data.harga;
+    // Validasi harga tidak boleh negatif
     if(tambah->data.harga < 0) {
         cout << "Harga Barang tidak boleh bernilai negatif" << endl;
         delete tambah;
@@ -159,6 +160,7 @@ void tambahBarang(){
 
     cout << "Stok Barang     : ";
     cin >> tambah->data.stok;
+    // Validasi stok tidak boleh negatif
     if(tambah->data.stok < 0) {
         cout << "Stok Barang tidak boleh bernilai negatif" << endl;
         delete tambah;
@@ -168,6 +170,7 @@ void tambahBarang(){
     cout << endl;
     // Menambahkan node didepan linked list
     tambah->next = head;
+    // Head berpindah ke node baru
     head = tambah;
     }
     simpanData();
