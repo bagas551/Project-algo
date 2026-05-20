@@ -199,9 +199,7 @@ void tampilBarang() {
     cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
 
     cout << "Jumlah Barang     : " << jumlah << endl;     
-    cout << "\nTekan enter untuk kembali ke menu...";
-    cin.ignore(1000,'\n');
-    cin.get();
+    
 }
 
 // search (sequential search)
@@ -519,10 +517,6 @@ case 2:
         cin >> ulang;
 
     } while (ulang == 'y' || ulang == 'Y');
-
-    cout << "\nTekan enter untuk kembali ke menu...";
-    cin.ignore();
-    cin.get();
     }
 
 
@@ -591,6 +585,9 @@ int main() {
             case 1: tambahBarang();
             break;
             case 2: tampilBarang();
+            cout << "\nTekan enter untuk kembali ke menu...";
+            cin.ignore(1000, '\n');
+            cin.get();
             break;
             case 3: menuSort();
             break;
