@@ -124,7 +124,16 @@ void tambahBarang(){
     cout << "\nData Barang ke-" << i+1 << endl;
 	cout << endl;
     cout << "Id Barang       : ";
-    cin >> tambah->data.id_barang;
+
+    while (!(cin >> tambah->data.id_barang)){
+        
+        cout << "Input ID harus angka! " << endl;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+        cout << "Id Barang  : ";
+    }
     cin.ignore(1000, '\n');
 
     cout << "Nama Barang     : ";
@@ -306,8 +315,6 @@ void cariNama() {
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-
-    cout << "\nTekan enter untuk kembali...";
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.get();
 }
@@ -337,13 +344,13 @@ void cariStok() {
     DataBarang* bantu = head;
     bool ketemu = false;
 
-    cout << "|" << setw(10) << "ID" 
-         << "|" << setw(25) << "Nama Barang"
-         << "|" << setw(10) << "Stock"
+    cout << "|" << setw(12) << "ID" 
+         << "|" << setw(22) << "Nama Barang"
+         << "|" << setw(12) << "Stock"
          << "|" << setw(15) << "Harga"
          << "|" << endl;
 
-    cout << setfill('-') << setw(65) << "-" << endl;
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
     cout << setfill(' ');
 
     while (bantu != NULL) {
@@ -351,13 +358,13 @@ void cariStok() {
         if (bantu->data.stok == cari_stok) {
 
             cout << "| "
-                 << left << setw(8) << bantu->data.id_barang
+                 << left << setw(12) << bantu->data.id_barang
                  << "| "
-                 << setw(18) << bantu->data.Nama_barang
+                 << setw(22) << bantu->data.Nama_barang
                  << "| "
-                 << setw(8) << bantu->data.stok
+                 << setw(12) << bantu->data.stok
                  << "| Rp "
-                 << setw(10) << bantu->data.harga
+                 << setw(12) << bantu->data.harga
                  << "|\n";
 
             ketemu = true;
@@ -367,8 +374,9 @@ void cariStok() {
     }
 
     if (!ketemu) {
-
-        cout << "| Barang dengan stok tersebut tidak ditemukan!          |\n";
+        cout << "| Barang dengan stok tersebut tidak ditemukan"
+			 << setw(40) << " "
+			 << "|" << endl;
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
@@ -555,8 +563,14 @@ int main() {
         system("cls");
        menuHeader(); 
         cout << "Pilih Menu: ";
-        cin >> pilihan;
-		cout << endl;
+        while (!(cin >> pilihan)){
+            cout << "\nInput harus angka!" << endl;
+
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+            cout << "\nPilih Menu: ";
+        }
         
         switch(pilihan) {
             case 1: tambahBarang();
