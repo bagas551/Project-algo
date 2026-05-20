@@ -235,8 +235,10 @@ void cariId() {
             cout << "|";
             cout << right << setfill('0') << setw(5) << hasil->data.id_barang
             << left << setfill(' ') << setw(6) << "" << "|" << setw(22) << hasil->data.Nama_barang
-            <<"|" << setw(10) << hasil->data.stok
-            << " | Rp" << setw(13) << hasil->data.harga << "|" << endl;
+            <<"|" << setw(11) << hasil->data.stok
+            << " | Rp" << setw(14) << hasil->data.harga << "|" << endl;
+            cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
+			cout << setfill(' ');
         } else {
             cout << "Maaf barang tidak ditemukan" << endl;
         }
