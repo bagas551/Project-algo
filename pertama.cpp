@@ -124,7 +124,16 @@ void tambahBarang(){
     cout << "\nData Barang ke-" << i+1 << endl;
 	cout << endl;
     cout << "Id Barang       : ";
-    cin >> tambah->data.id_barang;
+
+    while (!(cin >> tambah->data.id_barang)){
+        
+        cout << "Input ID harus angka! " << endl;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+        cout << "Id Barang  : ";
+    }
     cin.ignore(1000, '\n');
 
     cout << "Nama Barang     : ";
@@ -207,6 +216,8 @@ DataBarang* cariBarang(int id){
     }
     return NULL;
 }
+
+// Sequential search
 void cariId() {
     int cari;
     char id_cari;
@@ -298,8 +309,6 @@ void cariNama() {
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
-
-    cout << "\nTekan enter untuk kembali...";
     cout << "\nTekan enter untuk kembali ke menu utama...";
     cin.get();
 }
@@ -328,6 +337,15 @@ void cariStok() {
     DataBarang* bantu = head;
     bool ketemu = false;
 
+    cout << "|" << setw(12) << "ID" 
+         << "|" << setw(22) << "Nama Barang"
+         << "|" << setw(12) << "Stock"
+         << "|" << setw(15) << "Harga"
+         << "|" << endl;
+
+    cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
+    cout << setfill(' ');
+
 
     while (bantu != NULL) {
 
@@ -341,6 +359,16 @@ void cariStok() {
             cout << "+" << setfill('-') << setw(11) << "-" << "+" << setw(22) << "-" << "+" <<setw(12) << "-" << "+" << setw(17) << "-" << "+" << endl;
 			cout << setfill(' ');
 
+            cout << "| "
+                 << left << setw(12) << bantu->data.id_barang
+                 << "| "
+                 << setw(22) << bantu->data.Nama_barang
+                 << "| "
+                 << setw(12) << bantu->data.stok
+                 << "| Rp "
+                 << setw(12) << bantu->data.harga
+                 << "|\n";
+
             ketemu = true;
         }
 
@@ -348,8 +376,9 @@ void cariStok() {
     }
 
     if (!ketemu) {
-
-        cout << "| Barang dengan stok tersebut tidak ditemukan!          |\n";
+        cout << "| Barang dengan stok tersebut tidak ditemukan"
+			 << setw(40) << " "
+			 << "|" << endl;
     }
 
         cout << "+" << setfill('-') << setw(65) << "-" << "+" << endl;
@@ -384,7 +413,7 @@ void menuCari() {
         }
 }
 
-
+// Bubble sort
 void sortBarang(bool asc){
    if (head == NULL) {
         cout << "Belum ada data barang" << endl;
@@ -536,8 +565,14 @@ int main() {
         system("cls");
        menuHeader(); 
         cout << "Pilih Menu: ";
-        cin >> pilihan;
-		cout << endl;
+        while (!(cin >> pilihan)){
+            cout << "\nInput harus angka!" << endl;
+
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+            cout << "\nPilih Menu: ";
+        }
         
         switch(pilihan) {
             case 1: tambahBarang();
