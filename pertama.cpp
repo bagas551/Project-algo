@@ -483,13 +483,13 @@ void updateStok(){
 
 void menuSort() {
     int pilihanSort;
-
+        
         cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+" <<endl;
 		cout << "|" << setfill(' ') << setw(26) << "             URUT BERDASARKAN HARGA            " << setw(16) << "     |" << endl;
 		cout << "+" << setfill('-') << setw(7) << "" << setw(35) << "" << "+"<< endl;
 		cout << setfill(' ');
-    cout << "1. Ascending (Murah ke Mahal)" << endl;
-    cout << "2. Descending (Mahal ke Murah)" << endl;
+	cout << "|" << setfill(' ') << setw(55) << " 1. Ascending (Murah ke Mahal)" << setw(16) << "     |" << endl;
+    cout << "|" << setfill(' ') << setw(55) << " 2. Descending (Mahal ke Murah)" << setw(16) << "     |" << endl;
     cout << "Pilih urutan (1/2): ";
     cin >> pilihanSort;
 
